@@ -5,10 +5,10 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "css"
         },
         "@nrwl/workspace:component": {
-          "style": "scss"
+          "style": "css"
         }
       },
       "root": "apps/web",
@@ -38,7 +38,9 @@
                 "output": "icons"
               }
             ],
-            "styles": ["apps/web/src/styles.scss"],
+            "styles": [
+              "apps/web/src/styles.css"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -97,7 +99,10 @@
               "apps/web/tsconfig.spec.json",
               "apps/web/tsconfig.editor.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/web/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/web/**/*"
+            ]
           }
         },
         "test": {
@@ -130,8 +135,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/web-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/web-e2e/**/*"]
+            "tsConfig": [
+              "apps/web-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/web-e2e/**/*"
+            ]
           }
         }
       }
@@ -140,7 +150,7 @@
       "projectType": "library",
       "schematics": {
         "@nxext/stencil:component": {
-          "style": "scss",
+          "style": "css",
           "storybook": true
         }
       },
@@ -254,6 +264,9 @@
     },
     "@nrwl/angular:library": {
       "unitTestRunner": "jest"
+    },
+    "@schematics/angular:component": {
+      "styleext": "css"
     }
   },
   "defaultProject": "web"
