@@ -8,6 +8,7 @@ import { AddTaskModule } from './add-task/add-task.module';
 import { EditTaskModule } from './edit-task/edit-task.module';
 import { HomeScreenModule } from './home-screen/home-screen.module';
 import { LogInModule } from './log-in/log-in.module';
+import { AddTaskComponent } from './add-task/add-task.component';
 
 
 const routes: Routes = [
@@ -17,7 +18,7 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, AddTaskComponent],
   imports: [ BrowserModule, AddTaskModule, EditTaskModule, HomeScreenModule, LogInModule, RouterModule.forRoot(routes)],
   exports: [ RouterModule ],
   providers: [],
