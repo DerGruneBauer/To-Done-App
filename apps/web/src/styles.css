@@ -1,7 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
-
-/* @import '../../../dist/libs/ui/dist/nxlp/nxlp.css';
+/* 
+@import '../../../dist/libs/ui/dist/nxlp/nxlp.css';
 @import '../../../libs/ui/fonts/font.css';
 
 @import './css/reset'; */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Roboto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
 
