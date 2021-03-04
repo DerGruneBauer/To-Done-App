@@ -1,0 +1,213 @@
+
+.wrapper {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    background-color: #FBFBFD;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    border-bottom: solid #EAEDF3 2px;
+    padding: 10px 20px;
+    height: 13%;
+    width: 100%;
+}
+
+.toDoneTitle, .headerTitle{
+    display: none;
+}
+
+.smallLogo {
+    font-size: 16px;
+    width: 33%;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3E3F42;
+}
+
+.smallLogo svg {
+    fill: #34AA44;
+    margin: 0 10px 0 0;
+    height: 23px;
+}
+.smallLogo svg:hover {
+    cursor: pointer;
+}
+
+.middleContent {
+    height: 74%;
+    width: 100%;
+    overflow-y: auto;
+    background-color: white;
+    padding: 15px 20px;
+}
+
+.taskInfoWrapper {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+
+.title {
+    font-size: 12px;
+    color: #9EA0A5;
+    margin-bottom: 5px;
+}
+
+input, textarea {
+    border: solid 2px #EAEDF3;
+    border-radius: 4px;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 5px;
+}
+
+.description, .notes {
+    height: 100px;
+}
+
+.taskName, .dueDate, .labels {
+    height: 35px;
+}
+
+.iconAndDate {
+    border: solid 2px #EAEDF3;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    width: 70%;
+}
+.iconAndDate svg {
+    fill: #9EA0A5;
+    height: 25px;
+    margin: 5px;
+}
+
+.dueDate {
+    border: none;
+    margin-bottom: 0;
+}
+
+
+footer {
+    height: 13%;
+    width: 100%;
+    border-top: solid #EAEDF3 2px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    padding: 20px;
+}
+
+footer button {
+    border-radius: 4px;
+    font-size: 16px;
+    /* font-weight: 300; Not working for some reason. ned to make thinner*/
+    outline: none;
+    height: 40px;
+    width: 80px;
+    padding: 5px;
+}
+.saveButton {
+    background-color: #34AA44;
+    color: white;
+    border: none;
+}
+.saveButton:hover {
+    background-color: #309C3E;
+}
+.saveButton:active {
+    background-color: #2B8C38;
+}
+.deleteButton {
+    background-color: #E73C1E;
+    color: white;
+    border: none;
+    margin-right: 20px;
+}
+.deleteButton:hover {
+    background-color: #DE3517;
+}
+.deleteButton:active {
+    background-color: #CB3115;
+}
+.cancelButton {
+    border: 2px solid#EAEDF3;
+    background-color: white;
+    color: #3E3F42;
+}
+.cancelButton:hover {
+    background-color: #e6e6e6;
+}
+.cancelButton:active {
+    background-color: #D8D8D8;
+}
+
+@media only screen and (min-width: 1024px) {
+
+    .toDoneTitle, .headerTitle {
+        display: inline-block;
+    }
+    .headerTitle {
+        font-size: 20px;
+        width: 33%;
+        text-align: center;
+        font-weight: bold;
+    }
+    .addTaskTitle {
+        display: none;
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: flex-end;
+        width: 33%;
+    }
+
+    .smallLogo {
+        justify-content: flex-start;
+    }
+
+    header button {
+        border-radius: 4px;
+        font-size: 16px;
+        outline: none;
+        height: 40px;
+        width: 80px;
+        padding: 5px;
+        margin: 0 0 0 15px;
+    }
+
+    .taskInfoWrapper {
+        height: auto;
+        width: 650px;
+        padding: 40px;
+        margin: 190px 0 40px 0;
+        border: solid #EAEDF3 2px;
+        border-radius: 3px;
+    }
+
+    .middleContent {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 87%;
+        background-color: #FBFBFD;
+    }
+
+  }
+
+  @media only screen and (min-width: 1440px) {
+    .taskInfoWrapper {
+        margin: 100px 0 40px 0;
+    }
+  }
