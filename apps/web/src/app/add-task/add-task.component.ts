@@ -1,4 +1,7 @@
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { HostListener } from "@angular/core";
+
 
 @Component({
   selector: 'nxlp-add-task',
@@ -6,10 +9,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-task.component.css']
 })
 export class AddTaskComponent implements OnInit {
-
+  
+  screenWidth: any = window.screen.width;
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
 }

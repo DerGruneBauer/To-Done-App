@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HostListener } from "@angular/core";
 
 @Component({
   selector: 'nxlp-individual-card',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IndividualCardComponent implements OnInit {
 
+  screenWidth: any = window.screen.width;
   constructor() { }
 
   ngOnInit(): void {

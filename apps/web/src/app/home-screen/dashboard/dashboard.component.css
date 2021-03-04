@@ -13,7 +13,6 @@ header {
     background-color: white;
     border-bottom: solid #EAEDF3 2px;
     padding: 10px 20px;
-    /* position: fixed; */
     height: 13%;
     width: 100%;
 }
@@ -30,6 +29,10 @@ header div svg {
     fill: #34AA44;
     margin: 0 10px 0 0;
     height: 23px;
+    outline: none;
+}
+header div svg:hover {
+    cursor: pointer;
 }
 
 header button {
@@ -64,7 +67,7 @@ header button svg {
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); 
     overflow-y: auto;
     padding: 15px;
-    height: auto;
+    height: 87%;
     width: 100%;
     background-color: #FBFBFD;
     row-gap: 10px;
@@ -79,6 +82,9 @@ header button svg {
     border-radius: 3px;
     background-color: white;
     height: 300px;
+}
+.gridItem:hover {
+    cursor: pointer;
 }
 
 .gridPic {
