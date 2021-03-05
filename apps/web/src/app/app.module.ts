@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: '',  redirectTo: 'dashboard', pathMatch: 'full'},
   { path: 'dashboard',  loadChildren: () => import('./home-screen/home-screen.module').then(m => m.HomeScreenModule)},
   { path: 'addTask',  loadChildren: () => import('./add-task/add-task.module').then(m => m.AddTaskModule)},
-  { path: 'individualTask',  loadChildren: () => import('./individual-card/individual-card.module').then(m => m.IndividualCardModule)},
+  { path: 'individualCard',  loadChildren: () => import('./individual-card/individual-card.module').then(m => m.IndividualCardModule)},
 ]
 
 @NgModule({

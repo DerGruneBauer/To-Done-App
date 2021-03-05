@@ -9,7 +9,7 @@
         </div>
         <div class="headerTitle">{{ individualCard[0].title }}</div>
         <div class="buttons" *ngIf="screenWidth >= 1024">
-            <button routerLink="/addTask" class="editButton">Edit</button>
+            <button routerLink="/individualCard/editTask" class="editButton">Edit</button>
             <button routerLink="/dashboard" class="completeButton">Mark As Complete</button>
     </div>
     </header>
@@ -33,7 +33,7 @@
         </div>
     </div>
     <footer *ngIf="screenWidth < 1024">
-        <button routerLink="/addTask" class="editButton">Edit</button>
+        <button routerLink="/individualCard/editTask" class="editButton">Edit</button>
         <button routerLink="/dashboard" class="completeButton">Mark As Complete</button>
     </footer>
 </div>

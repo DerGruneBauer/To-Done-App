@@ -18,6 +18,7 @@ export class DashboardComponent implements OnInit {
     return this.taskService.getTaskList();
   }
 
+
   supplyCardInfo(task: Task) {
     this.taskService.getIndividualTask(task);
   }
