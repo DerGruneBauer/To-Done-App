@@ -41,6 +41,7 @@ header {
     fill: #34AA44;
     margin: 0 10px 0 0;
     height: 23px;
+    outline: none;
 }
 .smallLogo svg:hover {
     cursor: pointer;
@@ -197,11 +198,11 @@ footer button {
     }
 
     .infoWrapper {
-        width: 600px;
+        width: 650px;
         padding: 40px;
         border: solid #EAEDF3 2px;
         border-radius: 3px;
-        margin: 90px 0 40px 0;
+        margin: 70px 0 40px 0;
     }
 
     .middleContent {
@@ -214,5 +215,7 @@ footer button {
 }
 
 @media only screen and (min-width: 1440px) {
-
+    .infoWrapper {
+        margin: 10px 0 40px 0;
+    }
 }

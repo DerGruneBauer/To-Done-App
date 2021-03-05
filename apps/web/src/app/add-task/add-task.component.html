@@ -9,9 +9,9 @@
         </div>
         <div class="headerTitle">Add Task</div>
         <div class="buttons" *ngIf="screenWidth >= 1024">
-        <button class="cancelButton">Cancel</button>
-        <button class="deleteButton">Delete</button>
-        <button class="saveButton">Save</button>
+        <button routerLink ="/dashboard" class="cancelButton">Cancel</button>
+        <button routerLink ="/dashboard" class="deleteButton">Delete</button>
+        <button routerLink="/individualCard" (click)="addTask()" class="saveButton">Save</button>
     </div>
     </header>
     <div class="middleContent">
@@ -36,10 +36,10 @@
     </div>
 </div>
     <footer *ngIf="screenWidth < 1024">
-        <button class="cancelButton">Cancel</button>
+        <button routerLink ="/dashboard" class="cancelButton">Cancel</button>
         <div>
-        <button class="deleteButton">Delete</button>
-        <button class="saveButton">Save</button>
+        <button routerLink ="/dashboard" class="deleteButton">Delete</button>
+        <button routerLink="/individualCard" (click)="addTask()" class="saveButton">Save</button>
         </div>
     </footer>
 </div>

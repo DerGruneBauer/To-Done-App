@@ -77,6 +77,7 @@ header button svg {
     display: flex; 
     flex-direction: column;
     box-sizing: border-box;
+    justify-content: space-between;
     padding: 15px;
     border: solid #EAEDF3 2px;
     border-radius: 3px;
@@ -88,7 +89,7 @@ header button svg {
 }
 
 .gridPic {
-    height: 35%;
+    height: 100px;
     width: 100%;
     background-color: lightgray;
     border-radius: 5px;
@@ -116,7 +117,7 @@ header button svg {
 
 .tags {
     border: solid black 1px;
-    margin: 15px 10px 15px 0;
+    margin: 15px 10px 0px 0;
     padding: 2px 7px;
     border-radius: 3px;
     font-size: 16px;
@@ -124,7 +125,7 @@ header button svg {
 
 .cardTitle {
     font-size: 16px;
-    margin-bottom: 15px;
+    margin: 15px 0;
     font-weight: bold;
     color: #3E3F42;
 }
@@ -132,8 +133,11 @@ header button svg {
 .cardDescription {
     color: #9EA0A5;
     margin-bottom: 10px;
-    height: 20%;
+    height: 40px;
     font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .cardDate {

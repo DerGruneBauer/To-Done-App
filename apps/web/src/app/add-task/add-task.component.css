@@ -36,6 +36,7 @@ header {
     fill: #34AA44;
     margin: 0 10px 0 0;
     height: 23px;
+    outline: none;
 }
 .smallLogo svg:hover {
     cursor: pointer;
@@ -191,7 +192,7 @@ footer button {
         height: auto;
         width: 650px;
         padding: 40px;
-        margin: 190px 0 40px 0;
+        margin: 195px 0 40px 0;
         border: solid #EAEDF3 2px;
         border-radius: 3px;
     }
@@ -208,6 +209,6 @@ footer button {
 
   @media only screen and (min-width: 1440px) {
     .taskInfoWrapper {
-        margin: 100px 0 40px 0;
+        margin: 130px 0 40px 0;
     }
   }
