@@ -48,6 +48,14 @@ export class TaskService {
     return this;
   }
 
+  completeTask(task: Task) {
+    this.completedTasks.push(task);
+  }
+
+  returnCompletedTasks(): Task[] {
+    return this.completedTasks;
+  }
+
   getIndividualTask(task: Task) {
     this.individualTask.push(task);
     if(this.individualTask.length > 1){

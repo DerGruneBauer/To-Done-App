@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HostListener } from "@angular/core";
 import { TaskService } from '../../task.service';
+import { Router, RouterModule, Routes } from '@angular/router';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { TaskService } from '../../task.service';
 export class EditTaskComponent implements OnInit {
 
   screenWidth: any = window.screen.width;
-  constructor(public taskService: TaskService) { }
+  constructor(public taskService: TaskService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -24,6 +25,7 @@ export class EditTaskComponent implements OnInit {
     let labelsX = document.querySelector('.labels') as HTMLInputElement;
     let dueDateX = document.querySelector('.dueDate') as HTMLInputElement;
     let notesX = document.querySelector('.notes') as HTMLInputElement;
+    let required = document.querySelector('.required') as HTMLElement;
 
     let taskName = taskNameX.value;
     let thumbnail = thumbnailX.value;
@@ -32,8 +34,19 @@ export class EditTaskComponent implements OnInit {
     let dueDate = dueDateX.value;
     let notes = notesX.value;
     let id = this.task[0].id;
+    let regex = /.*\S+.*/;
 
-   this.taskService.editTask(id, taskName, thumbnail, description, labels, dueDate, notes);
+    if(regex.test(taskName)){
+      this.taskService.editTask(id, taskName, thumbnail, description, labels, dueDate, notes);
+      taskNameX.style.border = '#EAEDF3';
+      required.style.display = 'none';
+      this.router.navigateByUrl('/individualCard');
+      return;
+    } else {
+      taskNameX.style.border = 'red solid';
+      required.style.display = 'inline';
+    }
+
   }
 
   deleteTask() {

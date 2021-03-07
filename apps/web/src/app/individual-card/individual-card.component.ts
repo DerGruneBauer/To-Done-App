@@ -23,5 +23,12 @@ export class IndividualCardComponent implements OnInit {
     this.individualCard = this.taskService.returnIndividualTask();
   }
 
+  completeTask() {
+    this.taskService.completeTask(this.individualCard[0]);
+  }
+
+  deleteTask() {
+    this.taskService.deleteTask();
+  }
 
 }

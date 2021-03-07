@@ -10,7 +10,7 @@
         <div class="headerTitle">{{ individualCard[0].title }}</div>
         <div class="buttons" *ngIf="screenWidth >= 1024">
             <button routerLink="/individualCard/editTask" class="editButton">Edit</button>
-            <button routerLink="/dashboard" class="completeButton">Mark As Complete</button>
+            <button routerLink="/dashboard" (click)="completeTask()" (click)="deleteTask()" class="completeButton">Mark As Complete</button>
     </div>
     </header>
     <div class="middleContent">
@@ -34,6 +34,6 @@
     </div>
     <footer *ngIf="screenWidth < 1024">
         <button routerLink="/individualCard/editTask" class="editButton">Edit</button>
-        <button routerLink="/dashboard" class="completeButton">Mark As Complete</button>
+        <button routerLink="/dashboard" (click)="completeTask()" class="completeButton">Mark As Complete</button>
     </footer>
 </div>

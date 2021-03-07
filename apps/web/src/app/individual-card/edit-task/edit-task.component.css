@@ -56,6 +56,18 @@ header {
     background-color: white;
 }
 
+.error {
+    display: flex;
+    align-items: center;
+}
+
+.required {
+    display: none;
+    color: red;
+    font-size: 12px;
+    margin: 0 0 5px 5px;
+}
+
 .title {
     font-size: 12px;
     color: #9EA0A5;

@@ -55,6 +55,7 @@
     "@nrwl/cli": "10.4.1",
     "@nrwl/cypress": "10.4.1",
     "@nrwl/jest": "10.4.1",
+    "@nrwl/node": "^11.4.0",
     "@nrwl/storybook": "^10.0.0",
     "@nrwl/tao": "10.4.1",
     "@nrwl/workspace": "10.4.1",
