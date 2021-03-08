@@ -82,12 +82,59 @@ input, textarea {
     padding: 5px;
 }
 
+.taskName:focus, textarea:focus {
+    outline-color: #1665D8;
+}
+
 .description, .notes {
     height: 100px;
 }
 
-.taskName, .dueDate, .labels {
+.taskName, .iconAndDate {
     height: 35px;
+}
+
+.labelWrapper {
+    border: solid 2px #EAEDF3;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.labels {
+    width: 100%;
+    border: none;
+}
+
+.labelInput {
+    border: none;
+}
+
+.labelInput:focus {
+    outline: none;
+}
+
+#individualTag {
+    border-radius: 3px;
+    width: auto;
+    margin: 8px 0 8px 8px;
+    padding: 0 6px;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tagIcon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.labels svg {
+    height: 10px;
 }
 
 .iconAndDate {
@@ -97,18 +144,27 @@ input, textarea {
     margin-bottom: 20px;
     border-radius: 4px;
     width: 70%;
+    justify-content: center;
 }
 .iconAndDate svg {
     fill: #9EA0A5;
-    height: 25px;
-    margin: 5px;
+    height: 20px;
+    margin: 7px;
+}
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .dueDate {
     border: none;
-    margin-bottom: 0;
+    margin: 0;
+    padding: 0;
 }
-
+.dueDate:focus {
+    outline: none;
+}
 
 footer {
     height: 13%;

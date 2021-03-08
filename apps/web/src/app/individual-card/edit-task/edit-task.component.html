@@ -11,7 +11,7 @@
         <div class="buttons" *ngIf="screenWidth >= 1024">
         <button routerLink ="/dashboard" class="cancelButton">Cancel</button>
         <button routerLink ="/dashboard" (click)="deleteTask()" class="deleteButton">Delete</button>
-        <button (click)="editTask()" class="saveButton">Save Edits</button>
+        <button (click)="editTask()" class="saveButton">Save</button>
     </div>
     </header>
     <div class="middleContent">
@@ -39,7 +39,7 @@
         <button routerLink ="/dashboard" class="cancelButton">Cancel</button>
         <div>
         <button routerLink ="/dashboard" (click)="deleteTask()" class="deleteButton">Delete</button>
-        <button (click)="editTask()" class="saveButton">Save Edits</button>
+        <button (click)="editTask()" class="saveButton">Save</button>
         </div>
     </footer>
 </div>

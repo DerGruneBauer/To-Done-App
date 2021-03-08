@@ -8,6 +8,8 @@ import { AddTaskModule } from './add-task/add-task.module';
 import { HomeScreenModule } from './home-screen/home-screen.module';
 import { LogInModule } from './log-in/log-in.module';
 import { IndividualCardModule } from './individual-card/individual-card.module';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 const routes: Routes = [
@@ -19,7 +21,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [ BrowserModule, AddTaskModule, HomeScreenModule, LogInModule, IndividualCardModule, RouterModule.forRoot(routes)],
+  imports: [ BrowserModule, AddTaskModule, HomeScreenModule, LogInModule, IndividualCardModule, RouterModule.forRoot(routes), NoopAnimationsModule ],
   exports: [ RouterModule ],
   providers: [],
   bootstrap: [AppComponent],
