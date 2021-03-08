@@ -22,14 +22,9 @@ header {
     display: none;
 }
 
-.taskTitle {
-    width: auto;
-    display: inline-block;
-}
-
 .smallLogo {
     font-size: 16px;
-    width: 70%;
+    width: 33%;
     font-weight: bold;
     display: flex;
     align-items: center;
@@ -47,26 +42,30 @@ header {
     cursor: pointer;
 }
 
-
 .middleContent {
     height: 74%;
     width: 100%;
     overflow-y: auto;
     background-color: white;
-    display: flex;
-    align-items: center;
-    background-color: #FBFBFD;
+    padding: 15px 20px;
 }
 
-.infoWrapper {
+.taskInfoWrapper {
     width: 100%;
-    height: auto;
-    margin-top: 30px;
-    margin-bottom: 10px;
-    padding: 15px 20px;
+    height: 100%;
     background-color: white;
-    border-top: 2px solid#EAEDF3;
-    border-bottom: 2px solid#EAEDF3;
+}
+
+.error {
+    display: flex;
+    align-items: center;
+}
+
+.required {
+    display: none;
+    color: red;
+    font-size: 12px;
+    margin: 0 0 5px 5px;
 }
 
 .title {
@@ -75,36 +74,39 @@ header {
     margin-bottom: 5px;
 }
 
- .labels, .description, .notes {
-    height: 35px;
+input, textarea {
+    border: solid 2px #EAEDF3;
+    border-radius: 4px;
     width: 100%;
     margin-bottom: 20px;
+    padding: 5px;
 }
 
 .description, .notes {
-    height: auto;
-    word-wrap: break-word
+    height: 100px;
 }
 
-.thumbnail {
-    width: 100%;
-    height: 100px;
-    margin-bottom: 20px;
-    background-color: lightgray;
-    border-radius: 5px;
+.taskName, .dueDate, .labels {
+    height: 35px;
 }
 
 .iconAndDate {
+    border: solid 2px #EAEDF3;
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-    height: 30px;
+    border-radius: 4px;
     width: 70%;
 }
 .iconAndDate svg {
     fill: #9EA0A5;
     height: 25px;
-    margin: 5px 5px 5px 0;
+    margin: 5px;
+}
+
+.dueDate {
+    border: none;
+    margin-bottom: 0;
 }
 
 
@@ -114,7 +116,7 @@ footer {
     border-top: solid #EAEDF3 2px;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
     background-color: white;
     padding: 20px;
 }
@@ -127,38 +129,40 @@ footer button {
     height: 40px;
     width: auto;
     padding: 5px 20px;
-    margin-left: 20px;
 }
-
-.completeButton {
+.saveButton {
     background-color: #34AA44;
     color: white;
     border: none;
 }
-.completeButton:hover {
+.saveButton:hover {
     background-color: #309C3E;
 }
-.completeButton:active {
+.saveButton:active {
     background-color: #2B8C38;
 }
-
-.editButton {
+.deleteButton {
+    background-color: #E73C1E;
+    color: white;
+    border: none;
+    margin-right: 20px;
+}
+.deleteButton:hover {
+    background-color: #DE3517;
+}
+.deleteButton:active {
+    background-color: #CB3115;
+}
+.cancelButton {
     border: 2px solid#EAEDF3;
     background-color: white;
     color: #3E3F42;
 }
-.editButton:hover {
+.cancelButton:hover {
     background-color: #e6e6e6;
 }
-.editButton:active {
+.cancelButton:active {
     background-color: #D8D8D8;
-}
-
-@media only screen and (min-width: 768px) {
-    .infoWrapper {
-        margin-top: 30px;
-        margin-bottom: 10px;
-    }
 }
 
 @media only screen and (min-width: 1024px) {
@@ -172,7 +176,7 @@ footer button {
         text-align: center;
         font-weight: bold;
     }
-    .taskTitle {
+    .addTaskTitle {
         display: none;
     }
 
@@ -184,7 +188,6 @@ footer button {
 
     .smallLogo {
         justify-content: flex-start;
-        width: 33%;
     }
 
     header button {
@@ -197,12 +200,13 @@ footer button {
         margin: 0 0 0 15px;
     }
 
-    .infoWrapper {
+    .taskInfoWrapper {
+        height: auto;
         width: 650px;
         padding: 40px;
+        margin: 195px 0 40px 0;
         border: solid #EAEDF3 2px;
         border-radius: 3px;
-        margin: 70px 0 40px 0;
     }
 
     .middleContent {
@@ -212,10 +216,11 @@ footer button {
         height: 87%;
         background-color: #FBFBFD;
     }
-}
 
-@media only screen and (min-width: 1440px) {
-    .infoWrapper {
-        margin: 10px 0 40px 0;
+  }
+
+  @media only screen and (min-width: 1440px) {
+    .taskInfoWrapper {
+        margin: 130px 0 40px 0;
     }
-}
+  }

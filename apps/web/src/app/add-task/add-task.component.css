@@ -28,7 +28,7 @@ header {
     font-weight: bold;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     color: #3E3F42;
 }
 
@@ -36,6 +36,7 @@ header {
     fill: #34AA44;
     margin: 0 10px 0 0;
     height: 23px;
+    outline: none;
 }
 .smallLogo svg:hover {
     cursor: pointer;
@@ -55,6 +56,18 @@ header {
     background-color: white;
 }
 
+.error {
+    display: flex;
+    align-items: center;
+}
+
+.required {
+    display: none;
+    color: red;
+    font-size: 12px;
+    margin: 0 0 5px 5px;
+}
+
 .title {
     font-size: 12px;
     color: #9EA0A5;
@@ -69,12 +82,59 @@ input, textarea {
     padding: 5px;
 }
 
+.taskName:focus, textarea:focus {
+    outline-color: #1665D8;
+}
+
 .description, .notes {
     height: 100px;
 }
 
-.taskName, .dueDate, .labels {
+.taskName, .iconAndDate {
     height: 35px;
+}
+
+.labelWrapper {
+    border: solid 2px #EAEDF3;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.labels {
+    width: 100%;
+    border: none;
+}
+
+.labelInput {
+    border: none;
+}
+
+.labelInput:focus {
+    outline: none;
+}
+
+#individualTag {
+    border-radius: 3px;
+    width: auto;
+    margin: 8px 0 8px 8px;
+    padding: 0 6px;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tagIcon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.labels svg {
+    height: 10px;
 }
 
 .iconAndDate {
@@ -84,18 +144,27 @@ input, textarea {
     margin-bottom: 20px;
     border-radius: 4px;
     width: 70%;
+    justify-content: center;
 }
 .iconAndDate svg {
     fill: #9EA0A5;
-    height: 25px;
-    margin: 5px;
+    height: 20px;
+    margin: 7px;
+}
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .dueDate {
     border: none;
-    margin-bottom: 0;
+    margin: 0;
+    padding: 0;
 }
-
+.dueDate:focus {
+    outline: none;
+}
 
 footer {
     height: 13%;
@@ -114,8 +183,8 @@ footer button {
     /* font-weight: 300; Not working for some reason. ned to make thinner*/
     outline: none;
     height: 40px;
-    width: 80px;
-    padding: 5px;
+    width: auto;
+    padding: 5px 20px;
 }
 .saveButton {
     background-color: #34AA44;
@@ -182,8 +251,8 @@ footer button {
         font-size: 16px;
         outline: none;
         height: 40px;
-        width: 80px;
-        padding: 5px;
+        width: auto;
+        padding: 5px 20px;
         margin: 0 0 0 15px;
     }
 
@@ -191,7 +260,7 @@ footer button {
         height: auto;
         width: 650px;
         padding: 40px;
-        margin: 190px 0 40px 0;
+        margin: 195px 0 40px 0;
         border: solid #EAEDF3 2px;
         border-radius: 3px;
     }
@@ -208,6 +277,6 @@ footer button {
 
   @media only screen and (min-width: 1440px) {
     .taskInfoWrapper {
-        margin: 100px 0 40px 0;
+        margin: 130px 0 40px 0;
     }
   }

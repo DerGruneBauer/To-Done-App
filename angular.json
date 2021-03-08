@@ -39,6 +39,7 @@
               }
             ],
             "styles": [
+              "apps/web/src/custom-theme.scss",
               "apps/web/src/styles.css"
             ],
             "scripts": []

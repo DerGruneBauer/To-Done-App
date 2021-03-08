@@ -9,37 +9,71 @@
         </div>
         <div class="headerTitle">Add Task</div>
         <div class="buttons" *ngIf="screenWidth >= 1024">
-        <button class="cancelButton">Cancel</button>
-        <button class="deleteButton">Delete</button>
-        <button class="saveButton">Save</button>
+        <button routerLink ="/dashboard" class="cancelButton">Cancel</button>
+        <button routerLink ="/dashboard" class="deleteButton">Delete</button>
+        <button (click)="addTask()" class="saveButton">Save</button>
     </div>
     </header>
     <div class="middleContent">
     <div class="taskInfoWrapper">
-        <div class="title">TASK NAME*</div>
-        <input class="taskName"/>
+        <div class="error"><div class="title">TASK NAME* </div><div class="required"> This field is required.</div></div>
+        <input class="taskName" type="text"/>
         <div class="title">THUMBNAIL</div>
         <input class="thumbnail"/>
         <div class="title">DESCRIPTION</div>
-        <textarea class="description"></textarea>
+        <textarea class="description" type="text"></textarea>
         <div class="title">LABELS</div>
-        <input class="labels"/>
-        <div class="title">DUE DATE</div>
-        <div class="iconAndDate">
-            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-            <path d="M4 30.667c-1.473 0-2.667-1.194-2.667-2.667v0-21.333c0-1.473 1.194-2.667 2.667-2.667v0l5.999-0.001 0.001-1.332c0-0.736 0.597-1.333 1.333-1.333 0.68 0 1.241 0.509 1.323 1.166l0.010 0.167-0.001 1.332h6.667v-1.332c0-0.736 0.597-1.333 1.333-1.333 0.68 0 1.241 0.509 1.323 1.166l0.010 0.167-0.001 1.332 6.001 0.001c1.395 0 2.54 1.072 2.657 2.437l0.010 0.23v21.333c0 1.473-1.194 2.667-2.667 2.667v0zM9.999 22.666h-6l0.001 5.334 5.999-0.001v-5.333zM19.333 22.666h-6.667v5.333h6.667v-5.333zM27.999 22.666h-6v5.333l6.001 0.001-0.001-5.334zM9.999 14.666h-6v5.333h6v-5.333zM19.333 14.666h-6.667v5.333h6.667v-5.333zM27.999 14.666h-6v5.333h6v-5.333zM9.999 6.666l-5.999 0.001-0.001 5.332h24l0.001-5.332-6.001-0.001 0.001 1.334c0 0.736-0.597 1.333-1.333 1.333-0.68 0-1.241-0.509-1.323-1.166l-0.010-0.167v-1.334h-6.667l0.001 1.334c0 0.736-0.597 1.333-1.333 1.333-0.68 0-1.241-0.509-1.323-1.166l-0.010-0.167-0.001-1.334z"></path>
-            </svg>
-            <input class="dueDate"/>
+        <div class="labelWrapper">
+            <mat-chip-list class="labels" #chipList aria-label="Tags Selection">
+              <mat-chip
+              id="individualTag"
+                *ngFor="let tag of tags"
+                [selectable]="selectable"
+                [removable]="removable"
+                (removed)="remove(tag)">
+                <span>{{tag}}</span>
+                <mat-icon class="tagIcon" matChipRemove *ngIf="removable">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                    <path d="M31.219 0.781c0.955 0.955 1.034 2.453 0.239 3.498l-0.239 0.273-11.449 11.448 11.449 11.448c1.041 1.041 1.041 2.73 0 3.771-0.955 0.955-2.453 1.034-3.498 0.239l-0.273-0.239-11.448-11.449-11.448 11.449c-1.041 1.041-2.73 1.041-3.771 0-0.955-0.955-1.034-2.453-0.239-3.498l0.239-0.273 11.449-11.448-11.449-11.448c-1.041-1.041-1.041-2.73 0-3.771 0.955-0.955 2.453-1.034 3.498-0.239l0.273 0.239 11.448 11.449 11.448-11.449c1.041-1.041 2.73-1.041 3.771 0z"></path>
+                    </svg>
+                </mat-icon>
+              </mat-chip>
+              <input
+              class="labelInput"
+                #tagsInput
+                [formControl]="tagsCtrl"
+                [matAutocomplete]="auto"
+                [matChipInputFor]="chipList"
+                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                (matChipInputTokenEnd)="add($event)">
+            </mat-chip-list>
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+              <mat-option *ngFor="let tag of filteredTags | async" [value]="tag">
+                {{tag}}
+              </mat-option>
+            </mat-autocomplete>
         </div>
+        <div class="title">DUE DATE</div>
+                <div class="iconAndDate">
+                <mat-datepicker-toggle matSuffix [for]="picker">
+                    <mat-icon class="icon" matDatepickerToggleIcon>
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                        <path d="M4 30.667c-1.473 0-2.667-1.194-2.667-2.667v0-21.333c0-1.473 1.194-2.667 2.667-2.667v0l5.999-0.001 0.001-1.332c0-0.736 0.597-1.333 1.333-1.333 0.68 0 1.241 0.509 1.323 1.166l0.010 0.167-0.001 1.332h6.667v-1.332c0-0.736 0.597-1.333 1.333-1.333 0.68 0 1.241 0.509 1.323 1.166l0.010 0.167-0.001 1.332 6.001 0.001c1.395 0 2.54 1.072 2.657 2.437l0.010 0.23v21.333c0 1.473-1.194 2.667-2.667 2.667v0zM9.999 22.666h-6l0.001 5.334 5.999-0.001v-5.333zM19.333 22.666h-6.667v5.333h6.667v-5.333zM27.999 22.666h-6v5.333l6.001 0.001-0.001-5.334zM9.999 14.666h-6v5.333h6v-5.333zM19.333 14.666h-6.667v5.333h6.667v-5.333zM27.999 14.666h-6v5.333h6v-5.333zM9.999 6.666l-5.999 0.001-0.001 5.332h24l0.001-5.332-6.001-0.001 0.001 1.334c0 0.736-0.597 1.333-1.333 1.333-0.68 0-1.241-0.509-1.323-1.166l-0.010-0.167v-1.334h-6.667l0.001 1.334c0 0.736-0.597 1.333-1.333 1.333-0.68 0-1.241-0.509-1.323-1.166l-0.010-0.167-0.001-1.334z"></path>
+                        </svg>
+                    </mat-icon>
+                    </mat-datepicker-toggle>
+                <input class="dueDate" matInput [matDatepicker]="picker">
+                <mat-datepicker #picker></mat-datepicker>
+            </div>
         <div class="title">NOTES</div>
-        <textarea class="notes"></textarea>
+        <textarea class="notes" type="text"></textarea>
     </div>
 </div>
     <footer *ngIf="screenWidth < 1024">
-        <button class="cancelButton">Cancel</button>
+        <button routerLink ="/dashboard" class="cancelButton">Cancel</button>
         <div>
-        <button class="deleteButton">Delete</button>
-        <button class="saveButton">Save</button>
+        <button routerLink ="/dashboard" class="deleteButton">Delete</button>
+        <button (click)="addTask()" class="saveButton">Save</button>
         </div>
     </footer>
 </div>
