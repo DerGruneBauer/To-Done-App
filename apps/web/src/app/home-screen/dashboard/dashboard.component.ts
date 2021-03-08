@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../../task.service';
 import { Task } from '../../task';
 
+import { AngularFirestore } from '@angular/fire/firestore';
+
 @Component({
   selector: 'nxlp-dashboard',
   templateUrl: './dashboard.component.html',
@@ -14,6 +16,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.emptyArray = this.taskItems;
+    this.taskService.getDatabaseList();
   }
 
   showCompletedTasks() {

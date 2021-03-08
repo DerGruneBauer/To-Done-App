@@ -86,7 +86,6 @@ export class AddTaskComponent implements OnInit {
     let taskNameX = document.querySelector('.taskName') as HTMLInputElement;
     let thumbnailX = document.querySelector('.thumbnail') as HTMLInputElement;
     let descriptionX = document.querySelector('.description') as HTMLInputElement;
-    let labelsX = document.querySelector('.labels') as HTMLInputElement;
     let dueDateX = document.querySelector('.dueDate') as HTMLInputElement;
     let notesX = document.querySelector('.notes') as HTMLInputElement;
     let required = document.querySelector('.required') as HTMLElement;
@@ -94,7 +93,7 @@ export class AddTaskComponent implements OnInit {
     let taskName = taskNameX.value;
     let thumbnail = thumbnailX.value;
     let description = descriptionX.value;
-    let labels = labelsX.value;
+    let labels = this.tags;
     let dueDate = dueDateX.value;
     let notes = notesX.value;
     let id = this.taskList.length + 1;

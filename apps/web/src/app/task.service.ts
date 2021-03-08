@@ -2,6 +2,8 @@ import { ThrowStmt } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { Task } from './task';
 
+import { AngularFirestore } from '@angular/fire/firestore';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -17,7 +19,17 @@ export class TaskService {
 
   individualTask: Task[] = [];
   completedTasks: Task[] = [];
-  constructor() { }
+  constructor(private db: AngularFirestore) { }
+
+  getDatabaseList() {
+    const doc = this.db.collection('users').get();
+    doc.subscribe((data) => {
+    console.log(data);
+    });
+  }
+
+
+
 
   getTaskList() {
     return this.taskList;

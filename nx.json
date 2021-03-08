@@ -34,11 +34,12 @@
     },
     "web-e2e": {
       "tags": [],
-      "implicitDependencies": [
-        "web"
-      ]
+      "implicitDependencies": ["web"]
     },
     "ui": {
+      "tags": []
+    },
+    "api": {
       "tags": []
     }
   }
