@@ -1,37 +1,49 @@
-import { ThrowStmt } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { Task } from './task';
+import { Router, RouterModule, Routes } from '@angular/router';
 
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService {
 
-  taskList: Task[] = [
-    {id: 0, picture: '', title: 'Example Title For a Card', description: 'This is an example description for the first card', tags: ['Family', 'Important'], date: '10/09/2015', notes: 'Example Notes'},
-    {id: 1, picture: '', title: 'Example Number Two', description: 'This is an example description. Lorem Ipsum formioliThis is an example description. Lorem Ipsum formioli ravioli king kong punching bag, dog ravioli king kong punching bag, dog. This is an example description. Lorem Ipsum formioli ravioli king kong punching bag, dog', tags: ['Work', 'Family'], date: '12/20/2012', notes: 'Example Notes'},
-    {id: 2, picture: '', title: 'Example Number Three', description: 'This is an example description. Lorem Ipsum formioli ravioli king kong punching bag, dog', tags: [], date: '12/20/2012', notes: 'Example Notes'},
-    {id: 3, picture: '', title: 'Example Number Four', description: '', tags: ['Work', 'Fun'], date: '12/20/2012', notes: 'Example Notes'},
-    {id: 4, picture: '', title: 'Example Number Five', description: 'This is an example description', tags: ['Work', 'Family', 'Important'], date: '12/20/2012', notes: 'Example Notes'},
-  ];
+  taskList: Task[] = [];
 
   individualTask: Task[] = [];
   completedTasks: Task[] = [];
-  constructor(private db: AngularFirestore) { }
+  // user: string;
+  user: string = 'admin';
 
-  getDatabaseList() {
-    const doc = this.db.collection('users').get();
+  constructor(private db: AngularFirestore, private router: Router) { 
+   
+  }
+
+  logIn(username: string, password: string) {
+    const doc = this.db.doc(`users/${username}/logIn/logIn`).get();
     doc.subscribe((data) => {
-    console.log(data);
+     console.log(data.data());
+    //  let returnedUser = data.data().username;
+     let returnedPass = data.data().password;
+     if (returnedPass == password) {
+       console.log("congrats logging in");
+       this.user = username;
+       this.getTaskList();
+       this.router.navigateByUrl('/dashboard');
+      } else {
+        console.log("incorrect password");
+      }
     });
   }
 
-
-
-
   getTaskList() {
+    const doc = this.db.doc(`users/${this.user}/tasks/tasks`).get();
+    doc.subscribe((data) => {
+      let object = data.data();
+      let taskArray = object.tasks;
+    this.taskList = taskArray;
+    })
     return this.taskList;
   }
 

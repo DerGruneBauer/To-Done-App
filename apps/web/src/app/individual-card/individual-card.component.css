@@ -72,11 +72,11 @@ header {
 .title {
     font-size: 12px;
     color: #9EA0A5;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
  .labels, .description, .notes {
-    height: 35px;
+    min-height: 35px;
     width: 100%;
     margin-bottom: 20px;
 }
@@ -92,6 +92,18 @@ header {
     margin-bottom: 20px;
     background-color: lightgray;
     border-radius: 5px;
+}
+
+.labels {
+    display: flex; 
+}
+.individualLabel {
+    height: 23px;
+    margin: 0 10px 5px 0;
+    padding: 2px 7px;
+    border: solid black 1px;
+    border-radius: 3px;
+    font-size: 14px;
 }
 
 .iconAndDate {

@@ -20,7 +20,8 @@
             <div class="title">DESCRIPTION</div>
             <div class="description">{{ individualCard[0].description }}</div>
             <div class="title">LABELS</div>
-            <div class="labels"></div>
+            <div class="labels">
+                <div *ngFor="let tag of individualCard[0].tags" class="individualLabel">{{ tag }}</div></div>
             <div class="title">DUE DATE</div>
             <div class="iconAndDate">
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">

@@ -15,8 +15,7 @@ export class DashboardComponent implements OnInit {
   constructor(public taskService: TaskService) { }
 
   ngOnInit(): void {
-    this.emptyArray = this.taskItems;
-    this.taskService.getDatabaseList();
+  this.emptyArray = this.taskItems;
   }
 
   showCompletedTasks() {
@@ -45,8 +44,8 @@ export class DashboardComponent implements OnInit {
     return this.taskService.getTaskList();
   }
 
-  completeTasks() {
-    console.log(this.taskService.returnCompletedTasks());
+  getTaskList() {
+    return this.taskService.getTaskList();
   }
 
   get completedTasks() {

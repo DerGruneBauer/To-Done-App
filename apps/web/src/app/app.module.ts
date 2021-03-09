@@ -21,6 +21,7 @@ const routes: Routes = [
   { path: 'dashboard',  loadChildren: () => import('./home-screen/home-screen.module').then(m => m.HomeScreenModule)},
   { path: 'addTask',  loadChildren: () => import('./add-task/add-task.module').then(m => m.AddTaskModule)},
   { path: 'individualCard',  loadChildren: () => import('./individual-card/individual-card.module').then(m => m.IndividualCardModule)},
+  { path: 'logIn', loadChildren: () => import('./log-in/log-in.module').then(m => m.LogInModule)}
 ]
 
 const firebaseConfig = {
@@ -35,7 +36,7 @@ const firebaseConfig = {
 };
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent ],
   imports: [ 
     BrowserModule, 
     AddTaskModule, 
