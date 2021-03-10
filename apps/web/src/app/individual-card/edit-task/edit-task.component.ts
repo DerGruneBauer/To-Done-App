@@ -24,6 +24,7 @@ export class EditTaskComponent implements OnInit {
   filteredTags: Observable<string[]>;
   tags: string[] = [];
   allTags: string[] = ['Work', 'Personal', 'Important', 'Family'];
+  
 
   @ViewChild('tagsInput') tagsInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
@@ -37,43 +38,6 @@ export class EditTaskComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  }
-
-  add(event: MatChipInputEvent): void {
-    const input = event.input;
-    const value = event.value;
-
-      //Add
-    if ((value || '').trim()) {
-      this.tags.push(value.trim());
-    }
-
-    // Reset the input value
-    if (input) {
-      input.value = '';
-    }
-
-    this.tagsCtrl.setValue(null);
-  }
-
-  remove(tag: string): void {
-    const index = this.tags.indexOf(tag);
-
-    if (index >= 0) {
-      this.tags.splice(index, 1);
-    }
-  }
-
-  selected(event: MatAutocompleteSelectedEvent): void {
-    this.tags.push(event.option.viewValue);
-    this.tagsInput.nativeElement.value = '';
-    this.tagsCtrl.setValue(null);
-  }
-
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-
-    return this.allTags.filter(tag => tag.toLowerCase().indexOf(filterValue) === 0);
   }
 
   editTask() {
@@ -107,7 +71,11 @@ export class EditTaskComponent implements OnInit {
   }
 
   deleteTask() {
-    this.taskService.deleteTask();
+    if (this.ticker == 0) {
+      this.taskService.deleteTask();
+    } else if (this.ticker == 1) {
+      this.taskService.deleteCompletedTask();
+    }
   }
 
   get taskList() {
@@ -116,6 +84,44 @@ export class EditTaskComponent implements OnInit {
 
   get task() {
    return this.taskService.returnIndividualTask();
+  }
+
+  get ticker() {
+    return this.taskService.getTicker();
+  }
+
+  //Angular Material 'Chip' code below
+  add(event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value;
+      //Add
+    if ((value || '').trim()) {
+      this.tags.push(value.trim());
+    }
+    // Reset the input value
+    if (input) {
+      input.value = '';
+    }
+    this.tagsCtrl.setValue(null);
+  }
+
+  remove(tag: string): void {
+    const index = this.tags.indexOf(tag);
+
+    if (index >= 0) {
+      this.tags.splice(index, 1);
+    }
+  }
+
+  selected(event: MatAutocompleteSelectedEvent): void {
+    this.tags.push(event.option.viewValue);
+    this.tagsInput.nativeElement.value = '';
+    this.tagsCtrl.setValue(null);
+  }
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.allTags.filter(tag => tag.toLowerCase().indexOf(filterValue) === 0);
   }
 
 }

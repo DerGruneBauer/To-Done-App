@@ -98,7 +98,7 @@ input, textarea {
     border: solid 2px #EAEDF3;
     margin-bottom: 20px;
     border-radius: 4px;
-    height: 40px;
+    height: auto;
     display: flex;
     align-items: center;
 }

@@ -15,11 +15,11 @@
 </header>
 <div class="bottomWrapper">
     <div class="sliderButtons">
-        <div (click)="emptyArray = taskItems" (click)="showIncompleteTasks()" class="showIncompleteTasks"></div>
-    <div (click)="emptyArray = completedTasks" (click)="showCompletedTasks()" class="showCompletedTasks"></div>
+        <div (click)="emptyArray = taskItems" (click)="ticker = 0" (click)="showIncompleteTasks()" class="showIncompleteTasks"></div>
+    <div (click)="emptyArray = completedTasks" (click)="ticker = 1" (click)="showCompletedTasks()" class="showCompletedTasks"></div>
 </div>
 <div class="gridWrapper">
-    <div *ngFor="let item of emptyArray; let i = index" class="gridItem" (click)="supplyCardInfo(item)" routerLink="/individualCard">
+    <div *ngFor="let item of emptyArray; let i = index" class="gridItem" (click)="getId(i)" (click)="supplyCardInfo(item)" routerLink="/individualCard">
         <div>
         <div class="gridPic">
             <div *ngIf = "item.picture == ''">

@@ -14,7 +14,7 @@
            <div class="title">Username:</div>
            <input class="usernameInput" type="text"/>
            <div class="title">Password:</div>
-           <input class="passwordInput" type="password"/>
+           <input class="passwordInput" type="password" (keyup.enter)="logIn()"/>
            <button class="logInButton" (click)="logIn()">Log In</button>
         </div>
     </div>

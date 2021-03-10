@@ -9,15 +9,14 @@ import {MatChipInputEvent} from '@angular/material/chips';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 
-
 @Component({
   selector: 'nxlp-add-task',
   templateUrl: './add-task.component.html',
   styleUrls: ['./add-task.component.css']
 })
+
 export class AddTaskComponent implements OnInit {
   
-
   visible = true;
   selectable = true;
   removable = true;
@@ -30,8 +29,8 @@ export class AddTaskComponent implements OnInit {
   @ViewChild('tagsInput') tagsInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
 
-
   screenWidth: any = window.screen.width;
+
   constructor(public taskService: TaskService, private router: Router) {
     this.filteredTags = this.tagsCtrl.valueChanges.pipe(
       startWith(null),
@@ -39,52 +38,11 @@ export class AddTaskComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    
   }
-
-  add(event: MatChipInputEvent): void {
-    const input = event.input;
-    const value = event.value;
-
-      //Add
-    if ((value || '').trim()) {
-      this.tags.push(value.trim());
-    }
-
-    // Reset the input value
-    if (input) {
-      input.value = '';
-    }
-
-    this.tagsCtrl.setValue(null);
-  }
-
-  remove(tag: string): void {
-    const index = this.tags.indexOf(tag);
-
-    if (index >= 0) {
-      this.tags.splice(index, 1);
-    }
-  }
-
-  selected(event: MatAutocompleteSelectedEvent): void {
-    this.tags.push(event.option.viewValue);
-    this.tagsInput.nativeElement.value = '';
-    this.tagsCtrl.setValue(null);
-  }
-
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-
-    return this.allTags.filter(tag => tag.toLowerCase().indexOf(filterValue) === 0);
-  }
-
-
-
 
   addTask() {
     let taskNameX = document.querySelector('.taskName') as HTMLInputElement;
-    let thumbnailX = document.querySelector('.thumbnail') as HTMLInputElement;
+    let thumbnailX = document.querySelector('.thumbnailInput') as HTMLInputElement;
     let descriptionX = document.querySelector('.description') as HTMLInputElement;
     let dueDateX = document.querySelector('.dueDate') as HTMLInputElement;
     let notesX = document.querySelector('.notes') as HTMLInputElement;
@@ -109,7 +67,6 @@ export class AddTaskComponent implements OnInit {
       taskNameX.style.border = 'red solid';
       required.style.display = 'inline';
     }
-
   }
 
   deleteTask() {
@@ -118,6 +75,40 @@ export class AddTaskComponent implements OnInit {
 
   get taskList() {
     return this.taskService.getTaskList();
+  }
+
+//Below is for Angular Material 'chip'/tag elements
+  add(event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value;
+      //Add
+    if ((value || '').trim()) {
+      this.tags.push(value.trim());
+    }
+    // Reset the input value
+    if (input) {
+      input.value = '';
+    }
+    this.tagsCtrl.setValue(null);
+  }
+
+  remove(tag: string): void {
+    const index = this.tags.indexOf(tag);
+
+    if (index >= 0) {
+      this.tags.splice(index, 1);
+    }
+  }
+
+  selected(event: MatAutocompleteSelectedEvent): void {
+    this.tags.push(event.option.viewValue);
+    this.tagsInput.nativeElement.value = '';
+    this.tagsCtrl.setValue(null);
+  }
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.allTags.filter(tag => tag.toLowerCase().indexOf(filterValue) === 0);
   }
 
 }

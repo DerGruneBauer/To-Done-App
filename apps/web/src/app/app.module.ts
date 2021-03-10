@@ -17,7 +17,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 
 const routes: Routes = [
-  { path: '',  redirectTo: 'dashboard', pathMatch: 'full'},
+  { path: '',  redirectTo: 'logIn', pathMatch: 'full'},
   { path: 'dashboard',  loadChildren: () => import('./home-screen/home-screen.module').then(m => m.HomeScreenModule)},
   { path: 'addTask',  loadChildren: () => import('./add-task/add-task.module').then(m => m.AddTaskModule)},
   { path: 'individualCard',  loadChildren: () => import('./individual-card/individual-card.module').then(m => m.IndividualCardModule)},

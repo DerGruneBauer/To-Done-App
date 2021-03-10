@@ -1,35 +1,32 @@
 import { Injectable } from '@angular/core';
 import { Task } from './task';
 import { Router, RouterModule, Routes } from '@angular/router';
-
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class TaskService {
 
-  taskList: Task[] = [];
-
+  taskList = [];
   individualTask: Task[] = [];
   completedTasks: Task[] = [];
-  // user: string;
-  user: string = 'admin';
-
+  user: string;
+  // user: string = 'admin';
+  id: string = ''
+  completedId: string = '';
+  ticker: number = 0;
   constructor(private db: AngularFirestore, private router: Router) { 
-   
   }
 
   logIn(username: string, password: string) {
     const doc = this.db.doc(`users/${username}/logIn/logIn`).get();
     doc.subscribe((data) => {
-     console.log(data.data());
-    //  let returnedUser = data.data().username;
      let returnedPass = data.data().password;
      if (returnedPass == password) {
        console.log("congrats logging in");
        this.user = username;
-       this.getTaskList();
        this.router.navigateByUrl('/dashboard');
       } else {
         console.log("incorrect password");
@@ -37,46 +34,79 @@ export class TaskService {
     });
   }
 
+    getId(id: number) {
+    const docRef = this.db.collection(`users/${this.user}/tasks/`);
+    let idArray: string[] = [];
+    docRef.snapshotChanges().forEach((changes) => {
+      changes.map((a) => {
+        this.id = a.payload.doc.id;
+        idArray.push(this.id);
+      });
+      this.id = idArray[id];
+    });
+  }
+  getCompletedId(id: number) {
+    const docRef = this.db.collection(`users/${this.user}/completedTasks/`);
+    let idArray: string[] = [];
+    docRef.snapshotChanges().forEach((changes) => {
+      changes.map((a) => {
+        this.completedId = a.payload.doc.id;
+        idArray.push(this.completedId);
+      });
+      this.completedId = idArray[id];
+    });
+  }
+
   getTaskList() {
-    const doc = this.db.doc(`users/${this.user}/tasks/tasks`).get();
-    doc.subscribe((data) => {
-      let object = data.data();
-      let taskArray = object.tasks;
-    this.taskList = taskArray;
-    })
+    const refDoc = this.db.collection(`users/${this.user}/tasks/`).get();
+    this.taskList = [];
+    refDoc.subscribe((data) => {
+      data.docs.forEach((doc) => {
+        this.taskList.push(doc.data().field);
+      })
+      })
     return this.taskList;
   }
 
-  addTask(id: number, taskName: string, thumbnail: string, description:string, labels:string[], dueDate:string, notes: string) {
+  addTask(id: number, taskName: string, thumbnail:string, description:string, labels:string[], dueDate:string, notes: string) {
     let newTask = {id: id, picture: thumbnail, title: taskName, description: description, tags: labels, date: dueDate, notes: notes};
-    this.taskList.push(newTask);
+    this.db.collection(`users/${this.user}/tasks`).add({
+      field: newTask,
+    })
     this.getIndividualTask(newTask);
   }
 
-  editTask(id: number, taskName: string, thumbnail: string, description:string, labels:string[], dueDate:string, notes: string) {
-    this.taskList[id].title = taskName;
-    this.taskList[id].picture = thumbnail;
-    this.taskList[id].description = description;
-    this.taskList[id].tags = labels;
-    this.taskList[id].date = dueDate;
-    this.taskList[id].notes = notes;
-    this.getIndividualTask(this.taskList[id]);
+  editTask(id: number, taskName: string, thumbnail: string, description:string, labels:string[], dueDate:string, notes: string) { 
+    let editTask = {id: id, picture: thumbnail, title: taskName, description: description, tags: labels, date: dueDate, notes: notes};
+    this.db.collection(`users/${this.user}/tasks`).doc(this.id).update({
+      field: editTask
+    })
+    this.getIndividualTask(editTask);
   }
 
   deleteTask() {
-    for (let i=0; i < this.taskList.length; i++){
-      if (this.individualTask[0].id == this.taskList[i].id){
-        this.taskList.splice(i, 1)
-      }
-    }
-    return this;
+    this.db.collection(`users/${this.user}/tasks/`).doc(this.id).delete();
+  }
+  deleteCompletedTask() {
+    console.log(`deleteing id ${this.completedId}`);
+    this.db.collection(`users/${this.user}/completedTasks`).doc(this.completedId).delete();
   }
 
   completeTask(task: Task) {
-    this.completedTasks.push(task);
+    this.db.collection(`users/${this.user}/completedTasks`).add({
+      field: task,
+    })
+    this.deleteTask();
   }
 
-  returnCompletedTasks(): Task[] {
+  returnCompletedTasks() {
+    const refDoc = this.db.collection(`users/${this.user}/completedTasks`).get();
+    this.completedTasks = [];
+    refDoc.subscribe((data) => {
+      data.docs.forEach((doc) => {
+        this.completedTasks.push(doc.data().field);
+      })
+      })
     return this.completedTasks;
   }
 
@@ -90,7 +120,14 @@ export class TaskService {
     }
   }
 
-  returnIndividualTask(): Task[]{
+  returnIndividualTask() {
     return this.individualTask;
+  }
+
+  changeTicker(number: number) {
+    this.ticker = number;
+  }
+  getTicker() {
+    return this.ticker;
   }
 }

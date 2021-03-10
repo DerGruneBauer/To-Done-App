@@ -17,7 +17,6 @@ const routes: Routes = [
   { path: 'editTask', component: EditTaskComponent }
 ];
 
-
 @NgModule({
   declarations: [IndividualCardComponent, EditTaskComponent],
   imports: [
