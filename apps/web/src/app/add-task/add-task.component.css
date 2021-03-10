@@ -1,312 +1,314 @@
-
 .wrapper {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    background-color: #FBFBFD;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  background-color: #fbfbfd;
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: white;
-    border-bottom: solid #EAEDF3 2px;
-    padding: 10px 20px;
-    height: 13%;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border-bottom: solid #eaedf3 2px;
+  padding: 10px 20px;
+  height: 13%;
+  width: 100%;
 }
 
-.toDoneTitle, .headerTitle{
-    display: none;
+.toDoneTitle,
+.headerTitle {
+  display: none;
 }
 
 .smallLogo {
-    font-size: 16px;
-    width: 33%;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    color: #3E3F42;
+  font-size: 16px;
+  width: 33%;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: #3e3f42;
 }
 
 .smallLogo svg {
-    fill: #34AA44;
-    margin: 0 10px 0 0;
-    height: 23px;
-    outline: none;
+  fill: #34aa44;
+  margin: 0 10px 0 0;
+  height: 23px;
+  outline: none;
 }
 .smallLogo svg:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .middleContent {
-    height: 74%;
-    width: 100%;
-    overflow-y: auto;
-    background-color: white;
-    padding: 15px 20px;
+  height: 74%;
+  width: 100%;
+  overflow-y: auto;
+  background-color: white;
+  padding: 15px 20px;
 }
 
 .taskInfoWrapper {
-    width: 100%;
-    height: 100%;
-    background-color: white;
+  width: 100%;
+  height: 100%;
+  background-color: white;
 }
 
 .error {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .required {
-    display: none;
-    color: red;
-    font-size: 12px;
-    margin: 0 0 5px 5px;
+  display: none;
+  color: red;
+  font-size: 12px;
+  margin: 0 0 5px 5px;
 }
 
 .title {
-    font-size: 12px;
-    color: #9EA0A5;
-    margin-bottom: 8px;
+  font-size: 12px;
+  color: #9ea0a5;
+  margin-bottom: 8px;
 }
 
-input, textarea {
-    border: solid 2px #EAEDF3;
-    border-radius: 4px;
-    width: 100%;
-    margin-bottom: 20px;
-    padding: 5px;
+input,
+textarea {
+  border: solid 2px #eaedf3;
+  border-radius: 4px;
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 5px;
 }
 
 .thumbnail {
-    border: dashed 2px #EAEDF3;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 4px;
-    margin-bottom: 20px;
+  border: dashed 2px #eaedf3;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  margin-bottom: 20px;
 }
 .thumbnail:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .thumbnailInput {
-    width: 0.1px;
-	height: 0.1px;
-	opacity: 0;
-	overflow: hidden;
-	position: absolute;
-	z-index: -1;
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
 }
 .thumbnail svg {
-    fill: #9EA0A5;
-    height: 20px;
-    margin: 7px;
+  fill: #9ea0a5;
+  height: 20px;
+  margin: 7px;
 }
 .thumbnail span {
-    color: #9EA0A5;
+  color: #9ea0a5;
 }
 
-.taskName:focus, textarea:focus {
-    outline-color: #1665D8;
+.taskName:focus,
+textarea:focus {
+  outline-color: #1665d8;
 }
 
-.description, .notes {
-    height: 100px;
+.description,
+.notes {
+  height: 100px;
 }
 
-.taskName, .iconAndDate {
-    height: 35px;
+.taskName,
+.iconAndDate {
+  height: 35px;
 }
 
 .labelWrapper {
-    border: solid 2px #EAEDF3;
-    margin-bottom: 20px;
-    border-radius: 4px;
-    height: auto;
-    display: flex;
-    align-items: center;
+  border: solid 2px #eaedf3;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  height: auto;
+  display: flex;
+  align-items: center;
 }
 
 .labels {
-    width: 100%;
-    border: none;
+  width: 100%;
+  border: none;
 }
 
 .labelInput {
-    border: none;
+  border: none;
 }
 
 .labelInput:focus {
-    outline: none;
+  outline: none;
 }
 
 #individualTag {
-    border-radius: 3px;
-    width: auto;
-    margin: 8px 0 8px 8px;
-    padding: 0 6px;
-    font-size: 12px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  border-radius: 3px;
+  width: auto;
+  margin: 8px 0 8px 8px;
+  padding: 0 6px;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.tagIcon{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
+.tagIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
 }
 
 .labels svg {
-    height: 10px;
+  height: 10px;
 }
 
 .iconAndDate {
-    border: solid 2px #EAEDF3;
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    border-radius: 4px;
-    width: 70%;
-    justify-content: center;
+  border: solid 2px #eaedf3;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  width: 70%;
+  justify-content: center;
 }
 .iconAndDate svg {
-    fill: #9EA0A5;
-    height: 20px;
-    margin: 7px;
+  fill: #9ea0a5;
+  height: 20px;
+  margin: 7px;
 }
 .icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .dueDate {
-    border: none;
-    margin: 0;
-    padding: 0;
+  border: none;
+  margin: 0;
+  padding: 0;
 }
 .dueDate:focus {
-    outline: none;
+  outline: none;
 }
 
 footer {
-    height: 13%;
-    width: 100%;
-    border-top: solid #EAEDF3 2px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: white;
-    padding: 20px;
+  height: 13%;
+  width: 100%;
+  border-top: solid #eaedf3 2px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  padding: 20px;
 }
 
 footer button {
+  border-radius: 4px;
+  font-size: 16px;
+  outline: none;
+  height: 40px;
+  width: auto;
+  padding: 5px 20px;
+}
+.saveButton {
+  background-color: #34aa44;
+  color: white;
+  border: none;
+}
+.saveButton:hover {
+  background-color: #309c3e;
+}
+.saveButton:active {
+  background-color: #2b8c38;
+}
+.deleteButton {
+  background-color: #e73c1e;
+  color: white;
+  border: none;
+  margin-right: 20px;
+}
+.deleteButton:hover {
+  background-color: #de3517;
+}
+.deleteButton:active {
+  background-color: #cb3115;
+}
+.cancelButton {
+  border: 2px solid#EAEDF3;
+  background-color: white;
+  color: #3e3f42;
+}
+.cancelButton:hover {
+  background-color: #e6e6e6;
+}
+.cancelButton:active {
+  background-color: #d8d8d8;
+}
+
+@media only screen and (min-width: 1024px) {
+  .toDoneTitle,
+  .headerTitle {
+    display: inline-block;
+  }
+  .headerTitle {
+    font-size: 20px;
+    width: 33%;
+    text-align: center;
+    font-weight: bold;
+  }
+  .addTaskTitle {
+    display: none;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: flex-end;
+    width: 33%;
+  }
+
+  .smallLogo {
+    justify-content: flex-start;
+  }
+
+  header button {
     border-radius: 4px;
     font-size: 16px;
-    /* font-weight: 300; Not working for some reason. ned to make thinner*/
     outline: none;
     height: 40px;
     width: auto;
     padding: 5px 20px;
-}
-.saveButton {
-    background-color: #34AA44;
-    color: white;
-    border: none;
-}
-.saveButton:hover {
-    background-color: #309C3E;
-}
-.saveButton:active {
-    background-color: #2B8C38;
-}
-.deleteButton {
-    background-color: #E73C1E;
-    color: white;
-    border: none;
-    margin-right: 20px;
-}
-.deleteButton:hover {
-    background-color: #DE3517;
-}
-.deleteButton:active {
-    background-color: #CB3115;
-}
-.cancelButton {
-    border: 2px solid#EAEDF3;
-    background-color: white;
-    color: #3E3F42;
-}
-.cancelButton:hover {
-    background-color: #e6e6e6;
-}
-.cancelButton:active {
-    background-color: #D8D8D8;
-}
-
-@media only screen and (min-width: 1024px) {
-
-    .toDoneTitle, .headerTitle {
-        display: inline-block;
-    }
-    .headerTitle {
-        font-size: 20px;
-        width: 33%;
-        text-align: center;
-        font-weight: bold;
-    }
-    .addTaskTitle {
-        display: none;
-    }
-
-    .buttons {
-        display: flex;
-        justify-content: flex-end;
-        width: 33%;
-    }
-
-    .smallLogo {
-        justify-content: flex-start;
-    }
-
-    header button {
-        border-radius: 4px;
-        font-size: 16px;
-        outline: none;
-        height: 40px;
-        width: auto;
-        padding: 5px 20px;
-        margin: 0 0 0 15px;
-    }
-
-    .taskInfoWrapper {
-        height: auto;
-        width: 650px;
-        padding: 40px;
-        margin: 195px 0 40px 0;
-        border: solid #EAEDF3 2px;
-        border-radius: 3px;
-    }
-
-    .middleContent {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 87%;
-        background-color: #FBFBFD;
-    }
-
+    margin: 0 0 0 15px;
   }
 
-  @media only screen and (min-width: 1440px) {
-    .taskInfoWrapper {
-        margin: 150px 0 40px 0;
-    }
+  .taskInfoWrapper {
+    height: auto;
+    width: 650px;
+    padding: 40px;
+    margin: 195px 0 40px 0;
+    border: solid #eaedf3 2px;
+    border-radius: 3px;
   }
+
+  .middleContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 87%;
+    background-color: #fbfbfd;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .taskInfoWrapper {
+    margin: 150px 0 40px 0;
+  }
+}

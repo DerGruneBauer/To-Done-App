@@ -8,12 +8,12 @@ import {MatChipInputEvent} from '@angular/material/chips';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 
-
 @Component({
   selector: 'nxlp-edit-task',
   templateUrl: './edit-task.component.html',
   styleUrls: ['./edit-task.component.css']
 })
+
 export class EditTaskComponent implements OnInit {
 
   visible = true;
@@ -25,10 +25,8 @@ export class EditTaskComponent implements OnInit {
   tags: string[] = [];
   allTags: string[] = ['Work', 'Personal', 'Important', 'Family'];
   
-
   @ViewChild('tagsInput') tagsInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
-
 
   screenWidth: any = window.screen.width;
   constructor(public taskService: TaskService, private router: Router) { 
@@ -67,7 +65,6 @@ export class EditTaskComponent implements OnInit {
       taskNameX.style.border = 'red solid';
       required.style.display = 'inline';
     }
-
   }
 
   deleteTask() {
@@ -123,5 +120,4 @@ export class EditTaskComponent implements OnInit {
     const filterValue = value.toLowerCase();
     return this.allTags.filter(tag => tag.toLowerCase().indexOf(filterValue) === 0);
   }
-
 }

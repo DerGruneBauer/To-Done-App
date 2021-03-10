@@ -1,40 +1,77 @@
 <div class="wrapper">
-    <header>
-        <div class="smallLogo">
-            <svg routerLink="/dashboard" version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-            <path d="M21.926 1.185c0.818 0 1.481 0.663 1.481 1.481 0 0.755-0.565 1.379-1.296 1.47l-0.186 0.012h-17.037c-0.364 0-0.666 0.262-0.729 0.608l-0.012 0.133v22.222c0 0.364 0.262 0.666 0.608 0.729l0.133 0.012h22.222c0.364 0 0.666-0.262 0.729-0.608l0.012-0.133v-15.556c0-0.818 0.663-1.481 1.481-1.481 0.755 0 1.379 0.565 1.47 1.296l0.012 0.186v15.556c0 1.957-1.517 3.559-3.439 3.694l-0.265 0.009h-22.222c-1.957 0-3.559-1.517-3.694-3.439l-0.009-0.265v-22.222c0-1.957 1.517-3.559 3.439-3.694l0.264-0.009h17.037zM30.271 1.52c0.58 0.475 0.707 1.299 0.325 1.921l-0.117 0.164-13.333 16.296c-0.471 0.576-1.287 0.706-1.908 0.333l-0.164-0.114-7.407-5.926c-0.639-0.511-0.742-1.443-0.231-2.082 0.469-0.586 1.291-0.722 1.917-0.346l0.165 0.115 6.263 5.009 12.405-15.16c0.518-0.633 1.451-0.727 2.085-0.208z"></path>
-            </svg>
-            <span class="taskTitle">{{ individualCard[0].title }}</span>
-            <span class="toDoneTitle">To Done</span>
-        </div>
-        <div class="headerTitle">{{ individualCard[0].title }}</div>
-        <div class="buttons" *ngIf="screenWidth >= 1024">
-            <button routerLink="/individualCard/editTask" class="editButton">Edit</button>
-            <button routerLink="/dashboard" (click)="completeTask()" (click)="deleteTask()" class="completeButton">Mark As Complete</button>
+  <header>
+    <div class="smallLogo">
+      <svg
+        routerLink="/dashboard"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        width="32"
+        height="32"
+        viewBox="0 0 32 32"
+      >
+        <path
+          d="M21.926 1.185c0.818 0 1.481 0.663 1.481 1.481 0 0.755-0.565 1.379-1.296 1.47l-0.186 0.012h-17.037c-0.364 0-0.666 0.262-0.729 0.608l-0.012 0.133v22.222c0 0.364 0.262 0.666 0.608 0.729l0.133 0.012h22.222c0.364 0 0.666-0.262 0.729-0.608l0.012-0.133v-15.556c0-0.818 0.663-1.481 1.481-1.481 0.755 0 1.379 0.565 1.47 1.296l0.012 0.186v15.556c0 1.957-1.517 3.559-3.439 3.694l-0.265 0.009h-22.222c-1.957 0-3.559-1.517-3.694-3.439l-0.009-0.265v-22.222c0-1.957 1.517-3.559 3.439-3.694l0.264-0.009h17.037zM30.271 1.52c0.58 0.475 0.707 1.299 0.325 1.921l-0.117 0.164-13.333 16.296c-0.471 0.576-1.287 0.706-1.908 0.333l-0.164-0.114-7.407-5.926c-0.639-0.511-0.742-1.443-0.231-2.082 0.469-0.586 1.291-0.722 1.917-0.346l0.165 0.115 6.263 5.009 12.405-15.16c0.518-0.633 1.451-0.727 2.085-0.208z"
+        ></path>
+      </svg>
+      <span class="taskTitle">{{ individualCard[0].title }}</span>
+      <span class="toDoneTitle">To Done</span>
     </div>
-    </header>
-    <div class="middleContent">
-        <div class="infoWrapper">
-            <div class="title">THUMBNAIL</div>
-            <div class="thumbnail"></div>
-            <div class="title">DESCRIPTION</div>
-            <div class="description">{{ individualCard[0].description }}</div>
-            <div class="title">LABELS</div>
-            <div class="labels">
-                <div *ngFor="let tag of individualCard[0].tags" class="individualLabel">{{ tag }}</div></div>
-            <div class="title">DUE DATE</div>
-            <div class="iconAndDate">
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-                <path d="M4 30.667c-1.473 0-2.667-1.194-2.667-2.667v0-21.333c0-1.473 1.194-2.667 2.667-2.667v0l5.999-0.001 0.001-1.332c0-0.736 0.597-1.333 1.333-1.333 0.68 0 1.241 0.509 1.323 1.166l0.010 0.167-0.001 1.332h6.667v-1.332c0-0.736 0.597-1.333 1.333-1.333 0.68 0 1.241 0.509 1.323 1.166l0.010 0.167-0.001 1.332 6.001 0.001c1.395 0 2.54 1.072 2.657 2.437l0.010 0.23v21.333c0 1.473-1.194 2.667-2.667 2.667v0zM9.999 22.666h-6l0.001 5.334 5.999-0.001v-5.333zM19.333 22.666h-6.667v5.333h6.667v-5.333zM27.999 22.666h-6v5.333l6.001 0.001-0.001-5.334zM9.999 14.666h-6v5.333h6v-5.333zM19.333 14.666h-6.667v5.333h6.667v-5.333zM27.999 14.666h-6v5.333h6v-5.333zM9.999 6.666l-5.999 0.001-0.001 5.332h24l0.001-5.332-6.001-0.001 0.001 1.334c0 0.736-0.597 1.333-1.333 1.333-0.68 0-1.241-0.509-1.323-1.166l-0.010-0.167v-1.334h-6.667l0.001 1.334c0 0.736-0.597 1.333-1.333 1.333-0.68 0-1.241-0.509-1.323-1.166l-0.010-0.167-0.001-1.334z"></path>
-                </svg>
-                <div class="dueDate">{{ individualCard[0].date }}</div>
-            </div>
-            <div class="title">NOTES</div>
-            <div class="notes">{{ individualCard[0].notes }}</div>
-        </div>
+    <div class="headerTitle">{{ individualCard[0].title }}</div>
+    <div class="buttons" *ngIf="screenWidth >= 1024">
+      <button routerLink="/individualCard/editTask" class="editButton">
+        Edit
+      </button>
+      <button
+        routerLink="/dashboard"
+        (click)="completeTask()"
+        (click)="deleteTask()"
+        class="completeButton"
+      >
+        Mark As Complete
+      </button>
     </div>
-    <footer *ngIf="screenWidth < 1024">
-        <button routerLink="/individualCard/editTask" class="editButton">Edit</button>
-        <button routerLink="/dashboard" (click)="completeTask()" class="completeButton">Mark As Complete</button>
-    </footer>
+  </header>
+  <div class="middleContent">
+    <div class="infoWrapper">
+      <div class="title">THUMBNAIL</div>
+      <div class="thumbnail"></div>
+      <div class="title">DESCRIPTION</div>
+      <div class="description">{{ individualCard[0].description }}</div>
+      <div class="title">LABELS</div>
+      <div class="labels">
+        <div *ngFor="let tag of individualCard[0].tags" class="individualLabel">
+          {{ tag }}
+        </div>
+      </div>
+      <div class="title">DUE DATE</div>
+      <div class="iconAndDate">
+        <svg
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          width="32"
+          height="32"
+          viewBox="0 0 32 32"
+        >
+          <path
+            d="M4 30.667c-1.473 0-2.667-1.194-2.667-2.667v0-21.333c0-1.473 1.194-2.667 2.667-2.667v0l5.999-0.001 0.001-1.332c0-0.736 0.597-1.333 1.333-1.333 0.68 0 1.241 0.509 1.323 1.166l0.010 0.167-0.001 1.332h6.667v-1.332c0-0.736 0.597-1.333 1.333-1.333 0.68 0 1.241 0.509 1.323 1.166l0.010 0.167-0.001 1.332 6.001 0.001c1.395 0 2.54 1.072 2.657 2.437l0.010 0.23v21.333c0 1.473-1.194 2.667-2.667 2.667v0zM9.999 22.666h-6l0.001 5.334 5.999-0.001v-5.333zM19.333 22.666h-6.667v5.333h6.667v-5.333zM27.999 22.666h-6v5.333l6.001 0.001-0.001-5.334zM9.999 14.666h-6v5.333h6v-5.333zM19.333 14.666h-6.667v5.333h6.667v-5.333zM27.999 14.666h-6v5.333h6v-5.333zM9.999 6.666l-5.999 0.001-0.001 5.332h24l0.001-5.332-6.001-0.001 0.001 1.334c0 0.736-0.597 1.333-1.333 1.333-0.68 0-1.241-0.509-1.323-1.166l-0.010-0.167v-1.334h-6.667l0.001 1.334c0 0.736-0.597 1.333-1.333 1.333-0.68 0-1.241-0.509-1.323-1.166l-0.010-0.167-0.001-1.334z"
+          ></path>
+        </svg>
+        <div class="dueDate">{{ individualCard[0].date }}</div>
+      </div>
+      <div class="title">NOTES</div>
+      <div class="notes">{{ individualCard[0].notes }}</div>
+    </div>
+  </div>
+  <footer *ngIf="screenWidth < 1024">
+    <button routerLink="/individualCard/editTask" class="editButton">
+      Edit
+    </button>
+    <button
+      routerLink="/dashboard"
+      (click)="completeTask()"
+      class="completeButton"
+    >
+      Mark As Complete
+    </button>
+  </footer>
 </div>

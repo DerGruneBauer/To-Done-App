@@ -1,204 +1,203 @@
-
 .wrapper {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: white;
-    border-bottom: solid #EAEDF3 2px;
-    padding: 10px 20px;
-    height: 13%;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border-bottom: solid #eaedf3 2px;
+  padding: 10px 20px;
+  height: 13%;
+  width: 100%;
 }
 
 header div {
-    font-size: 16px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 header div svg {
-    fill: #34AA44;
-    margin: 0 10px 0 0;
-    height: 23px;
-    outline: none;
+  fill: #34aa44;
+  margin: 0 10px 0 0;
+  height: 23px;
+  outline: none;
 }
 header div svg:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 header button {
-    background-color: #34AA44;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    /* font-weight: 300; Not working for some reason. ned to make thinner*/
-    padding: 5px 10px 5px 5px;
-    height: 40px;
-    width: 120px;
-    outline: none;
+  background-color: #34aa44;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  padding: 5px 10px 5px 5px;
+  height: 40px;
+  width: 120px;
+  outline: none;
 }
 header button:hover {
-    background-color: #309C3E;
+  background-color: #309c3e;
 }
 header button:active {
-    background-color: #2B8C38;
+  background-color: #2b8c38;
 }
 
 header button svg {
-    fill: white;
-    height: 20px;
+  fill: white;
+  height: 20px;
 }
 
 .bottomWrapper {
-    height: 87%;
-    width: 100%;
-    overflow-y: auto;
-    background-color: #FBFBFD;
+  height: 87%;
+  width: 100%;
+  overflow-y: auto;
+  background-color: #fbfbfd;
 }
 
 .sliderButtons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
 }
 
-.showCompletedTasks, .showIncompleteTasks {
-    height: 10px;
-    width: 10px;
-    border-radius: 50%;
+.showCompletedTasks,
+.showIncompleteTasks {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
 }
 .showIncompleteTasks {
-    background-color: darkgray;
-    margin-right: 10px;
+  background-color: darkgray;
+  margin-right: 10px;
 }
 .showCompletedTasks {
-    background-color: lightgray;
+  background-color: lightgray;
 }
 .sliderButtons div:hover {
-   cursor: pointer;
+  cursor: pointer;
 }
 
 .gridWrapper {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); 
-    padding: 15px;
-    height: auto;
-    background-color: #FBFBFD;
-    row-gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  padding: 15px;
+  height: auto;
+  background-color: #fbfbfd;
+  row-gap: 10px;
 }
 
 .gridItem {
-    display: flex; 
-    flex-direction: column;
-    box-sizing: border-box;
-    justify-content: space-between;
-    padding: 15px;
-    border: solid #EAEDF3 2px;
-    border-radius: 3px;
-    background-color: white;
-    height: 300px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  justify-content: space-between;
+  padding: 15px;
+  border: solid #eaedf3 2px;
+  border-radius: 3px;
+  background-color: white;
+  height: 300px;
 }
 .gridItem:hover {
-    cursor: pointer;
-    transform: scale(1.02);
+  cursor: pointer;
+  transform: scale(1.02);
 }
 
 .gridPic {
-    height: 100px;
-    width: 100%;
-    background-color: lightgray;
-    border-radius: 5px;
+  height: 100px;
+  width: 100%;
+  background-color: lightgray;
+  border-radius: 5px;
 }
 
 .gridPic div {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
 }
 
 .gridPic div svg {
-    fill: #9EA0A5;
-    height: 20px;
-    margin-bottom: 5px;
+  fill: #9ea0a5;
+  height: 20px;
+  margin-bottom: 5px;
 }
 
 .tagWrapper {
-    width: 100%;
-    height: auto;
-    display: flex;
+  width: 100%;
+  height: auto;
+  display: flex;
 }
 
 .tags {
-    border: solid black 1px;
-    margin: 15px 10px 0 0;
-    padding: 2px 7px;
-    border-radius: 3px;
-    font-size: 14px;
+  border: solid black 1px;
+  margin: 15px 10px 0 0;
+  padding: 2px 7px;
+  border-radius: 3px;
+  font-size: 14px;
 }
 
 .cardTitle {
-    font-size: 16px;
-    margin: 15px 0;
-    font-weight: bold;
-    color: #3E3F42;
+  font-size: 16px;
+  margin: 15px 0;
+  font-weight: bold;
+  color: #3e3f42;
 }
 
 .cardDescription {
-    color: #9EA0A5;
-    margin-bottom: 10px;
-    height: 40px;
-    font-size: 14px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  color: #9ea0a5;
+  margin-bottom: 10px;
+  height: 40px;
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .test {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .cardDate {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: #3E3F42;
-    font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #3e3f42;
+  font-size: 16px;
 }
 
 .cardDate svg {
-    fill: #9EA0A5;
-    height: 25px;
-    margin: 0 5px 0 -3px;
+  fill: #9ea0a5;
+  height: 25px;
+  margin: 0 5px 0 -3px;
 }
 
 .completed {
-    display: none;
-    color: #309C3E;
-    font-weight: bold;
+  display: none;
+  color: #309c3e;
+  font-weight: bold;
 }
 
 @media only screen and (min-width: 768px) {
-   .gridWrapper {
-       column-gap: 25px;
-       row-gap: 25px;
-   }
+  .gridWrapper {
+    column-gap: 25px;
+    row-gap: 25px;
+  }
 }
 
 @media only screen and (min-width: 1024px) {
@@ -206,18 +205,19 @@ header button svg {
     padding: 20px 100px;
   }
 
-  .showCompletedTasks, .showIncompleteTasks {
+  .showCompletedTasks,
+  .showIncompleteTasks {
     height: 15px;
     width: 15px;
-}
-.showIncompleteTasks {
+  }
+  .showIncompleteTasks {
     background-color: darkgray;
     margin-right: 20px;
-}
+  }
 }
 
 @media only screen and (min-width: 1440px) {
-    .gridWrapper {
-        padding: 20px 170px;
-    }
+  .gridWrapper {
+    padding: 20px 170px;
   }
+}
