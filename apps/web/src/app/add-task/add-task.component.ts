@@ -9,15 +9,14 @@ import {MatChipInputEvent} from '@angular/material/chips';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 
-
 @Component({
   selector: 'nxlp-add-task',
   templateUrl: './add-task.component.html',
   styleUrls: ['./add-task.component.css']
 })
+
 export class AddTaskComponent implements OnInit {
   
-
   visible = true;
   selectable = true;
   removable = true;
@@ -30,8 +29,8 @@ export class AddTaskComponent implements OnInit {
   @ViewChild('tagsInput') tagsInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
 
-
   screenWidth: any = window.screen.width;
+
   constructor(public taskService: TaskService, private router: Router) {
     this.filteredTags = this.tagsCtrl.valueChanges.pipe(
       startWith(null),
@@ -39,23 +38,57 @@ export class AddTaskComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    
   }
 
+  addTask() {
+    let taskNameX = document.querySelector('.taskName') as HTMLInputElement;
+    let thumbnailX = document.querySelector('.thumbnailInput') as HTMLInputElement;
+    let descriptionX = document.querySelector('.description') as HTMLInputElement;
+    let dueDateX = document.querySelector('.dueDate') as HTMLInputElement;
+    let notesX = document.querySelector('.notes') as HTMLInputElement;
+    let required = document.querySelector('.required') as HTMLElement;
+
+    let taskName = taskNameX.value;
+    let thumbnail = thumbnailX.value;
+    let description = descriptionX.value;
+    let labels = this.tags;
+    let dueDate = dueDateX.value;
+    let notes = notesX.value;
+    let id = this.taskList.length + 1;
+    let regex = /.*\S+.*/;
+
+    if(regex.test(taskName)){
+      this.taskService.addTask(id, taskName, thumbnail, description, labels, dueDate, notes);
+      taskNameX.style.border = '#EAEDF3';
+      required.style.display = 'none';
+      this.router.navigateByUrl('/individualCard');
+      return;
+    } else {
+      taskNameX.style.border = 'red solid';
+      required.style.display = 'inline';
+    }
+  }
+
+  deleteTask() {
+    this.taskService.deleteTask();
+  }
+
+  get taskList() {
+    return this.taskService.getTaskList();
+  }
+
+//Below is for Angular Material 'chip'/tag elements
   add(event: MatChipInputEvent): void {
     const input = event.input;
     const value = event.value;
-
-    // Add our fruit
+      //Add
     if ((value || '').trim()) {
       this.tags.push(value.trim());
     }
-
     // Reset the input value
     if (input) {
       input.value = '';
     }
-
     this.tagsCtrl.setValue(null);
   }
 
@@ -75,50 +108,7 @@ export class AddTaskComponent implements OnInit {
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
-
     return this.allTags.filter(tag => tag.toLowerCase().indexOf(filterValue) === 0);
-  }
-
-
-
-
-  addTask() {
-    let taskNameX = document.querySelector('.taskName') as HTMLInputElement;
-    let thumbnailX = document.querySelector('.thumbnail') as HTMLInputElement;
-    let descriptionX = document.querySelector('.description') as HTMLInputElement;
-    let labelsX = document.querySelector('.labels') as HTMLInputElement;
-    let dueDateX = document.querySelector('.dueDate') as HTMLInputElement;
-    let notesX = document.querySelector('.notes') as HTMLInputElement;
-    let required = document.querySelector('.required') as HTMLElement;
-
-    let taskName = taskNameX.value;
-    let thumbnail = thumbnailX.value;
-    let description = descriptionX.value;
-    let labels = labelsX.value;
-    let dueDate = dueDateX.value;
-    let notes = notesX.value;
-    let id = this.taskList.length + 1;
-    let regex = /.*\S+.*/;
-
-    if(regex.test(taskName)){
-      this.taskService.addTask(id, taskName, thumbnail, description, labels, dueDate, notes);
-      taskNameX.style.border = '#EAEDF3';
-      required.style.display = 'none';
-      this.router.navigateByUrl('/individualCard');
-      return;
-    } else {
-      taskNameX.style.border = 'red solid';
-      required.style.display = 'inline';
-    }
-
-  }
-
-  deleteTask() {
-    this.taskService.deleteTask();
-  }
-
-  get taskList() {
-    return this.taskService.getTaskList();
   }
 
 }

@@ -1,72 +1,171 @@
-import { ThrowStmt } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { Task } from './task';
+import { Router, RouterModule, Routes } from '@angular/router';
+import {
+  AngularFirestore,
+  AngularFirestoreDocument,
+} from '@angular/fire/firestore';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TaskService {
-
-  taskList: Task[] = [
-    {id: 0, picture: '', title: 'Example Title For a Card', description: 'This is an example description for the first card', tags: ['Family', 'Important'], date: '10/09/2015', notes: 'Example Notes'},
-    {id: 1, picture: '', title: 'Example Number Two', description: 'This is an example description. Lorem Ipsum formioliThis is an example description. Lorem Ipsum formioli ravioli king kong punching bag, dog ravioli king kong punching bag, dog. This is an example description. Lorem Ipsum formioli ravioli king kong punching bag, dog', tags: ['Work', 'Family'], date: '12/20/2012', notes: 'Example Notes'},
-    {id: 2, picture: '', title: 'Example Number Three', description: 'This is an example description. Lorem Ipsum formioli ravioli king kong punching bag, dog', tags: [], date: '12/20/2012', notes: 'Example Notes'},
-    {id: 3, picture: '', title: 'Example Number Four', description: '', tags: ['Work', 'Fun'], date: '12/20/2012', notes: 'Example Notes'},
-    {id: 4, picture: '', title: 'Example Number Five', description: 'This is an example description', tags: ['Work', 'Family', 'Important'], date: '12/20/2012', notes: 'Example Notes'},
-  ];
-
+  taskList = [];
   individualTask: Task[] = [];
   completedTasks: Task[] = [];
-  constructor() { }
+  user: string;
+  id: string = '';
+  completedId: string = '';
+  ticker: number = 0;
+
+  constructor(private db: AngularFirestore, private router: Router) {}
+
+  logIn(username: string, password: string) {
+    const doc = this.db.doc(`users/${username}/logIn/logIn`).get();
+    doc.subscribe((data) => {
+      let returnedPass = data.data().password;
+      if (returnedPass == password) {
+        console.log('congrats logging in');
+        this.user = username;
+        this.router.navigateByUrl('/dashboard');
+      } else {
+        console.log('incorrect password');
+      }
+    });
+  }
+
+  getId(id: number) {
+    const docRef = this.db.collection(`users/${this.user}/tasks/`);
+    let idArray: string[] = [];
+    docRef.snapshotChanges().forEach((changes) => {
+      changes.map((a) => {
+        this.id = a.payload.doc.id;
+        idArray.push(this.id);
+      });
+      this.id = idArray[id];
+    });
+  }
+  getCompletedId(id: number) {
+    const docRef = this.db.collection(`users/${this.user}/completedTasks/`);
+    let idArray: string[] = [];
+    docRef.snapshotChanges().forEach((changes) => {
+      changes.map((a) => {
+        this.completedId = a.payload.doc.id;
+        idArray.push(this.completedId);
+      });
+      this.completedId = idArray[id];
+    });
+  }
 
   getTaskList() {
+    const refDoc = this.db.collection(`users/${this.user}/tasks/`).get();
+    this.taskList = [];
+    refDoc.subscribe((data) => {
+      data.docs.forEach((doc) => {
+        this.taskList.push(doc.data().field);
+      });
+    });
     return this.taskList;
   }
 
-  addTask(id: number, taskName: string, thumbnail: string, description:string, labels:string[], dueDate:string, notes: string) {
-    let newTask = {id: id, picture: thumbnail, title: taskName, description: description, tags: labels, date: dueDate, notes: notes};
-    this.taskList.push(newTask);
+  addTask(
+    id: number,
+    taskName: string,
+    thumbnail: string,
+    description: string,
+    labels: string[],
+    dueDate: string,
+    notes: string
+  ) {
+    let newTask = {
+      id: id,
+      picture: thumbnail,
+      title: taskName,
+      description: description,
+      tags: labels,
+      date: dueDate,
+      notes: notes,
+    };
+    this.db.collection(`users/${this.user}/tasks`).add({
+      field: newTask,
+    });
     this.getIndividualTask(newTask);
   }
 
-  editTask(id: number, taskName: string, thumbnail: string, description:string, labels:string[], dueDate:string, notes: string) {
-    this.taskList[id].title = taskName;
-    this.taskList[id].picture = thumbnail;
-    this.taskList[id].description = description;
-    this.taskList[id].tags = labels;
-    this.taskList[id].date = dueDate;
-    this.taskList[id].notes = notes;
-    this.getIndividualTask(this.taskList[id]);
+  editTask(
+    id: number,
+    taskName: string,
+    thumbnail: string,
+    description: string,
+    labels: string[],
+    dueDate: string,
+    notes: string
+  ) {
+    let editTask = {
+      id: id,
+      picture: thumbnail,
+      title: taskName,
+      description: description,
+      tags: labels,
+      date: dueDate,
+      notes: notes,
+    };
+    this.db.collection(`users/${this.user}/tasks`).doc(this.id).update({
+      field: editTask,
+    });
+    this.getIndividualTask(editTask);
   }
 
   deleteTask() {
-    for (let i=0; i < this.taskList.length; i++){
-      if (this.individualTask[0].id == this.taskList[i].id){
-        this.taskList.splice(i, 1)
-      }
-    }
-    return this;
+    this.db.collection(`users/${this.user}/tasks/`).doc(this.id).delete();
+  }
+  deleteCompletedTask() {
+    console.log(`deleteing id ${this.completedId}`);
+    this.db
+      .collection(`users/${this.user}/completedTasks`)
+      .doc(this.completedId)
+      .delete();
   }
 
   completeTask(task: Task) {
-    this.completedTasks.push(task);
+    this.db.collection(`users/${this.user}/completedTasks`).add({
+      field: task,
+    });
+    this.deleteTask();
   }
 
-  returnCompletedTasks(): Task[] {
+  returnCompletedTasks() {
+    const refDoc = this.db
+      .collection(`users/${this.user}/completedTasks`)
+      .get();
+    this.completedTasks = [];
+    refDoc.subscribe((data) => {
+      data.docs.forEach((doc) => {
+        this.completedTasks.push(doc.data().field);
+      });
+    });
     return this.completedTasks;
   }
 
   getIndividualTask(task: Task) {
     this.individualTask.push(task);
-    if(this.individualTask.length > 1){
-      this.individualTask.splice(0,1);
+    if (this.individualTask.length > 1) {
+      this.individualTask.splice(0, 1);
       return this;
-    }else{
+    } else {
       return this;
     }
   }
 
-  returnIndividualTask(): Task[]{
+  returnIndividualTask() {
     return this.individualTask;
+  }
+
+  changeTicker(number: number) {
+    this.ticker = number;
+  }
+
+  getTicker() {
+    return this.ticker;
   }
 }

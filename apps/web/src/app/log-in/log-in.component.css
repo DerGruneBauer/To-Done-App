@@ -1,0 +1,140 @@
+.wrapper {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  background-color: #fbfbfd;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border-bottom: solid #eaedf3 2px;
+  padding: 10px 20px;
+  height: 13%;
+  width: 100%;
+}
+
+.smallLogo {
+  font-size: 16px;
+  width: 50%;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: #3e3f42;
+}
+
+.smallLogo svg {
+  fill: #34aa44;
+  margin: 0 10px 0 0;
+  height: 23px;
+  outline: none;
+}
+
+.createUser {
+  background-color: #34aa44;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  outline: none;
+  height: 40px;
+  width: auto;
+  padding: 5px 20px;
+  margin: 0 0 0 15px;
+}
+.createUser:hover,
+.logInButton:hover {
+  background-color: #309c3e;
+}
+.createUser:active,
+.logInButton:active {
+  background-color: #2b8c38;
+}
+
+.middleContent {
+  height: 74%;
+  width: 100%;
+  overflow-y: auto;
+  display: flex;
+  align-items: center;
+  background-color: #fbfbfd;
+}
+
+.infoWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  height: auto;
+  padding: 30px 20px;
+  background-color: white;
+  border-top: 2px solid#EAEDF3;
+  border-bottom: 2px solid#EAEDF3;
+}
+
+.logInTitle {
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.title {
+  font-size: 16px;
+  color: #9ea0a5;
+  margin-bottom: 10px;
+}
+
+input {
+  border: solid 2px #eaedf3;
+  border-radius: 4px;
+  width: 100%;
+  height: 40px;
+  margin-bottom: 20px;
+  padding-left: 10px;
+}
+
+input:focus {
+  outline-color: #1665d8;
+}
+
+.logInButton {
+  background-color: #34aa44;
+  text-align: center;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  outline: none;
+  height: 40px;
+  width: 100%;
+  padding: 5px 20px;
+}
+
+@media only screen and (min-width: 768px) {
+  .middleContent {
+    justify-content: center;
+  }
+  .infoWrapper {
+    width: 70%;
+    padding: 40px;
+    border: solid #eaedf3 2px;
+    border-radius: 3px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .infoWrapper {
+    width: 55%;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .infoWrapper {
+    width: 45%;
+  }
+}

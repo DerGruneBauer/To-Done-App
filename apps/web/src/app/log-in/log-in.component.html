@@ -1,0 +1,29 @@
+<div class="wrapper">
+  <header>
+    <div class="smallLogo">
+      <svg
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        width="32"
+        height="32"
+        viewBox="0 0 32 32"
+      >
+        <path
+          d="M21.926 1.185c0.818 0 1.481 0.663 1.481 1.481 0 0.755-0.565 1.379-1.296 1.47l-0.186 0.012h-17.037c-0.364 0-0.666 0.262-0.729 0.608l-0.012 0.133v22.222c0 0.364 0.262 0.666 0.608 0.729l0.133 0.012h22.222c0.364 0 0.666-0.262 0.729-0.608l0.012-0.133v-15.556c0-0.818 0.663-1.481 1.481-1.481 0.755 0 1.379 0.565 1.47 1.296l0.012 0.186v15.556c0 1.957-1.517 3.559-3.439 3.694l-0.265 0.009h-22.222c-1.957 0-3.559-1.517-3.694-3.439l-0.009-0.265v-22.222c0-1.957 1.517-3.559 3.439-3.694l0.264-0.009h17.037zM30.271 1.52c0.58 0.475 0.707 1.299 0.325 1.921l-0.117 0.164-13.333 16.296c-0.471 0.576-1.287 0.706-1.908 0.333l-0.164-0.114-7.407-5.926c-0.639-0.511-0.742-1.443-0.231-2.082 0.469-0.586 1.291-0.722 1.917-0.346l0.165 0.115 6.263 5.009 12.405-15.16c0.518-0.633 1.451-0.727 2.085-0.208z"
+        ></path>
+      </svg>
+      To Done
+    </div>
+    <button routerLink="" class="createUser">Create Account</button>
+  </header>
+  <div class="middleContent">
+    <div class="infoWrapper">
+      <div class="logInTitle">Log In Below:</div>
+      <div class="title">Username:</div>
+      <input class="usernameInput" type="text" />
+      <div class="title">Password:</div>
+      <input class="passwordInput" type="password" (keyup.enter)="logIn()" />
+      <button class="logInButton" (click)="logIn()">Log In</button>
+    </div>
+  </div>
+</div>

@@ -1,45 +1,137 @@
 <div class="wrapper">
-    <header>
-        <div class="smallLogo">
-            <svg routerLink="/dashboard" version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-            <path d="M21.926 1.185c0.818 0 1.481 0.663 1.481 1.481 0 0.755-0.565 1.379-1.296 1.47l-0.186 0.012h-17.037c-0.364 0-0.666 0.262-0.729 0.608l-0.012 0.133v22.222c0 0.364 0.262 0.666 0.608 0.729l0.133 0.012h22.222c0.364 0 0.666-0.262 0.729-0.608l0.012-0.133v-15.556c0-0.818 0.663-1.481 1.481-1.481 0.755 0 1.379 0.565 1.47 1.296l0.012 0.186v15.556c0 1.957-1.517 3.559-3.439 3.694l-0.265 0.009h-22.222c-1.957 0-3.559-1.517-3.694-3.439l-0.009-0.265v-22.222c0-1.957 1.517-3.559 3.439-3.694l0.264-0.009h17.037zM30.271 1.52c0.58 0.475 0.707 1.299 0.325 1.921l-0.117 0.164-13.333 16.296c-0.471 0.576-1.287 0.706-1.908 0.333l-0.164-0.114-7.407-5.926c-0.639-0.511-0.742-1.443-0.231-2.082 0.469-0.586 1.291-0.722 1.917-0.346l0.165 0.115 6.263 5.009 12.405-15.16c0.518-0.633 1.451-0.727 2.085-0.208z"></path>
-            </svg>
-            <span class="addTaskTitle">Edit Task</span>
-            <span class="toDoneTitle">To Done</span>
-        </div>
-        <div class="headerTitle">Edit Task</div>
-        <div class="buttons" *ngIf="screenWidth >= 1024">
-        <button routerLink ="/dashboard" class="cancelButton">Cancel</button>
-        <button routerLink ="/dashboard" (click)="deleteTask()" class="deleteButton">Delete</button>
-        <button (click)="editTask()" class="saveButton">Save</button>
+  <header>
+    <div class="smallLogo">
+      <svg
+        routerLink="/dashboard"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        width="32"
+        height="32"
+        viewBox="0 0 32 32"
+      >
+        <path
+          d="M21.926 1.185c0.818 0 1.481 0.663 1.481 1.481 0 0.755-0.565 1.379-1.296 1.47l-0.186 0.012h-17.037c-0.364 0-0.666 0.262-0.729 0.608l-0.012 0.133v22.222c0 0.364 0.262 0.666 0.608 0.729l0.133 0.012h22.222c0.364 0 0.666-0.262 0.729-0.608l0.012-0.133v-15.556c0-0.818 0.663-1.481 1.481-1.481 0.755 0 1.379 0.565 1.47 1.296l0.012 0.186v15.556c0 1.957-1.517 3.559-3.439 3.694l-0.265 0.009h-22.222c-1.957 0-3.559-1.517-3.694-3.439l-0.009-0.265v-22.222c0-1.957 1.517-3.559 3.439-3.694l0.264-0.009h17.037zM30.271 1.52c0.58 0.475 0.707 1.299 0.325 1.921l-0.117 0.164-13.333 16.296c-0.471 0.576-1.287 0.706-1.908 0.333l-0.164-0.114-7.407-5.926c-0.639-0.511-0.742-1.443-0.231-2.082 0.469-0.586 1.291-0.722 1.917-0.346l0.165 0.115 6.263 5.009 12.405-15.16c0.518-0.633 1.451-0.727 2.085-0.208z"
+        ></path>
+      </svg>
+      <span class="addTaskTitle">Edit Task</span>
+      <span class="toDoneTitle">To Done</span>
     </div>
-    </header>
-    <div class="middleContent">
+    <div class="headerTitle">Edit Task</div>
+    <div class="buttons" *ngIf="screenWidth >= 1024">
+      <button routerLink="/dashboard" class="cancelButton">Cancel</button>
+      <button
+        routerLink="/dashboard"
+        (click)="deleteTask()"
+        class="deleteButton"
+      >
+        Delete
+      </button>
+      <button (click)="editTask()" class="saveButton">Save</button>
+    </div>
+  </header>
+  <div class="middleContent">
     <div class="taskInfoWrapper">
-        <div class="error"><div class="title">TASK NAME* </div><div class="required"> This field is required.</div></div>
-        <input class="taskName" value="{{ task[0].title }}"/>
-        <div class="title">THUMBNAIL</div>
-        <input class="thumbnail"/>
-        <div class="title">DESCRIPTION</div>
-        <textarea class="description" value="{{ task[0].description }}"></textarea>
-        <div class="title">LABELS</div>
-        <input class="labels"/>
-        <div class="title">DUE DATE</div>
-        <div class="iconAndDate">
-            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-            <path d="M4 30.667c-1.473 0-2.667-1.194-2.667-2.667v0-21.333c0-1.473 1.194-2.667 2.667-2.667v0l5.999-0.001 0.001-1.332c0-0.736 0.597-1.333 1.333-1.333 0.68 0 1.241 0.509 1.323 1.166l0.010 0.167-0.001 1.332h6.667v-1.332c0-0.736 0.597-1.333 1.333-1.333 0.68 0 1.241 0.509 1.323 1.166l0.010 0.167-0.001 1.332 6.001 0.001c1.395 0 2.54 1.072 2.657 2.437l0.010 0.23v21.333c0 1.473-1.194 2.667-2.667 2.667v0zM9.999 22.666h-6l0.001 5.334 5.999-0.001v-5.333zM19.333 22.666h-6.667v5.333h6.667v-5.333zM27.999 22.666h-6v5.333l6.001 0.001-0.001-5.334zM9.999 14.666h-6v5.333h6v-5.333zM19.333 14.666h-6.667v5.333h6.667v-5.333zM27.999 14.666h-6v5.333h6v-5.333zM9.999 6.666l-5.999 0.001-0.001 5.332h24l0.001-5.332-6.001-0.001 0.001 1.334c0 0.736-0.597 1.333-1.333 1.333-0.68 0-1.241-0.509-1.323-1.166l-0.010-0.167v-1.334h-6.667l0.001 1.334c0 0.736-0.597 1.333-1.333 1.333-0.68 0-1.241-0.509-1.323-1.166l-0.010-0.167-0.001-1.334z"></path>
+      <div class="error">
+        <div class="title">TASK NAME*</div>
+        <div class="required">This field is required.</div>
+      </div>
+      <input class="taskName" value="{{ task[0].title }}" />
+      <div class="title">THUMBNAIL</div>
+      <label class="thumbnail">
+        <svg
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          width="32"
+          height="32"
+          viewBox="0 0 32 32"
+        >
+          <path
+            d="M16 3.037c5.304 0 9.644 4.13 9.979 9.349 3.389 1.162 5.749 4.372 5.749 8.058 0 4.705-3.814 8.519-8.519 8.519-0.795 0-1.576-0.109-2.327-0.322-0.59-0.167-0.933-0.782-0.766-1.372s0.782-0.933 1.372-0.766c0.555 0.157 1.132 0.238 1.721 0.238 3.477 0 6.296-2.819 6.296-6.296 0-2.932-2.021-5.457-4.833-6.126-0.466-0.111-0.793-0.5-0.846-0.949-0.030-0.105-0.048-0.217-0.048-0.333 0-4.296-3.482-7.778-7.778-7.778s-7.778 3.482-7.778 7.778c0 0.398-0.209 0.747-0.523 0.943-0.145 0.162-0.341 0.284-0.57 0.339-2.813 0.669-4.833 3.194-4.833 6.126 0 3.477 2.819 6.296 6.296 6.296 0.589 0 1.167-0.081 1.721-0.238 0.59-0.167 1.205 0.176 1.372 0.766s-0.176 1.205-0.766 1.372c-0.751 0.213-1.532 0.322-2.327 0.322-4.705 0-8.519-3.814-8.519-8.519 0-3.759 2.454-7.022 5.952-8.125 0.367-5.187 4.692-9.283 9.974-9.283zM16.628 12.805l0.154 0.128 5.283 5.242c0.436 0.432 0.438 1.136 0.006 1.571-0.384 0.387-0.983 0.432-1.417 0.134l-0.154-0.128-3.39-3.364 0.001 9.982c0 0.614-0.497 1.111-1.111 1.111-0.558 0-1.020-0.411-1.099-0.947l-0.012-0.164-0.001-9.963-3.238 3.252c-0.385 0.386-0.984 0.43-1.417 0.131l-0.154-0.128c-0.386-0.385-0.43-0.984-0.131-1.417l0.128-0.154 5.137-5.154c0.384-0.386 0.982-0.43 1.415-0.132z"
+          ></path>
+        </svg>
+        <span>Click to upload</span>
+        <input class="thumbnailInput" />
+      </label>
+      <div class="title">DESCRIPTION</div>
+      <textarea
+        class="description"
+        value="{{ task[0].description }}"
+      ></textarea>
+      <div class="title">LABELS</div>
+      <div class="labelWrapper">
+        <mat-chip-list class="labels" #chipList aria-label="Tags Selection">
+          <mat-chip
+            id="individualTag"
+            *ngFor="let tag of tags"
+            [selectable]="selectable"
+            [removable]="removable"
+            (removed)="remove(tag)"
+          >
+            <span>{{ tag }}</span>
+            <mat-icon class="tagIcon" matChipRemove *ngIf="removable">
+              <svg
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 32 32"
+              >
+                <path
+                  d="M31.219 0.781c0.955 0.955 1.034 2.453 0.239 3.498l-0.239 0.273-11.449 11.448 11.449 11.448c1.041 1.041 1.041 2.73 0 3.771-0.955 0.955-2.453 1.034-3.498 0.239l-0.273-0.239-11.448-11.449-11.448 11.449c-1.041 1.041-2.73 1.041-3.771 0-0.955-0.955-1.034-2.453-0.239-3.498l0.239-0.273 11.449-11.448-11.449-11.448c-1.041-1.041-1.041-2.73 0-3.771 0.955-0.955 2.453-1.034 3.498-0.239l0.273 0.239 11.448 11.449 11.448-11.449c1.041-1.041 2.73-1.041 3.771 0z"
+                ></path>
+              </svg>
+            </mat-icon>
+          </mat-chip>
+          <input
+            class="labelInput"
+            #tagsInput
+            [formControl]="tagsCtrl"
+            [matAutocomplete]="auto"
+            [matChipInputFor]="chipList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            (matChipInputTokenEnd)="add($event)"
+          />
+        </mat-chip-list>
+        <mat-autocomplete
+          #auto="matAutocomplete"
+          (optionSelected)="selected($event)"
+        >
+          <mat-option *ngFor="let tag of filteredTags | async" [value]="tag">
+            {{ tag }}
+          </mat-option>
+        </mat-autocomplete>
+      </div>
+      <div class="title">DUE DATE</div>
+      <div class="iconAndDate">
+        <mat-datepicker-toggle matSuffix [for]="picker">
+          <mat-icon class="icon" matDatepickerToggleIcon>
+            <svg
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 32 32"
+            >
+              <path
+                d="M4 30.667c-1.473 0-2.667-1.194-2.667-2.667v0-21.333c0-1.473 1.194-2.667 2.667-2.667v0l5.999-0.001 0.001-1.332c0-0.736 0.597-1.333 1.333-1.333 0.68 0 1.241 0.509 1.323 1.166l0.010 0.167-0.001 1.332h6.667v-1.332c0-0.736 0.597-1.333 1.333-1.333 0.68 0 1.241 0.509 1.323 1.166l0.010 0.167-0.001 1.332 6.001 0.001c1.395 0 2.54 1.072 2.657 2.437l0.010 0.23v21.333c0 1.473-1.194 2.667-2.667 2.667v0zM9.999 22.666h-6l0.001 5.334 5.999-0.001v-5.333zM19.333 22.666h-6.667v5.333h6.667v-5.333zM27.999 22.666h-6v5.333l6.001 0.001-0.001-5.334zM9.999 14.666h-6v5.333h6v-5.333zM19.333 14.666h-6.667v5.333h6.667v-5.333zM27.999 14.666h-6v5.333h6v-5.333zM9.999 6.666l-5.999 0.001-0.001 5.332h24l0.001-5.332-6.001-0.001 0.001 1.334c0 0.736-0.597 1.333-1.333 1.333-0.68 0-1.241-0.509-1.323-1.166l-0.010-0.167v-1.334h-6.667l0.001 1.334c0 0.736-0.597 1.333-1.333 1.333-0.68 0-1.241-0.509-1.323-1.166l-0.010-0.167-0.001-1.334z"
+              ></path>
             </svg>
-            <input class="dueDate" value="{{ task[0].date }}"/>
-        </div>
-        <div class="title">NOTES</div>
-        <textarea class="notes" value="{{ task[0].notes }}"></textarea>
+          </mat-icon>
+        </mat-datepicker-toggle>
+        <input class="dueDate" matInput [matDatepicker]="picker" />
+        <mat-datepicker #picker></mat-datepicker>
+      </div>
+      <div class="title">NOTES</div>
+      <textarea class="notes" value="{{ task[0].notes }}"></textarea>
     </div>
-</div>
-    <footer *ngIf="screenWidth < 1024">
-        <button routerLink ="/dashboard" class="cancelButton">Cancel</button>
-        <div>
-        <button routerLink ="/dashboard" (click)="deleteTask()" class="deleteButton">Delete</button>
-        <button (click)="editTask()" class="saveButton">Save</button>
-        </div>
-    </footer>
+  </div>
+  <footer *ngIf="screenWidth < 1024">
+    <button routerLink="/dashboard" class="cancelButton">Cancel</button>
+    <div>
+      <button
+        routerLink="/dashboard"
+        (click)="deleteTask()"
+        class="deleteButton"
+      >
+        Delete
+      </button>
+      <button (click)="editTask()" class="saveButton">Save</button>
+    </div>
+  </footer>
 </div>

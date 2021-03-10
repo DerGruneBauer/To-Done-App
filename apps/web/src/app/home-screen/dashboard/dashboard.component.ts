@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../../task.service';
 import { Task } from '../../task';
 
+import { AngularFirestore } from '@angular/fire/firestore';
+
 @Component({
   selector: 'nxlp-dashboard',
   templateUrl: './dashboard.component.html',
@@ -9,11 +11,12 @@ import { Task } from '../../task';
 })
 export class DashboardComponent implements OnInit {
 
+  ticker: number = 0;
   emptyArray: Task[] = [];
   constructor(public taskService: TaskService) { }
 
   ngOnInit(): void {
-    this.emptyArray = this.taskItems;
+  this.emptyArray = this.taskItems;
   }
 
   showCompletedTasks() {
@@ -25,6 +28,7 @@ export class DashboardComponent implements OnInit {
     }
     completedTaskButton.style.backgroundColor = "darkgray";
     incompleteButton.style.backgroundColor = "lightgray";
+    this.taskService.changeTicker(this.ticker);
   }
 
   showIncompleteTasks() {
@@ -36,14 +40,19 @@ export class DashboardComponent implements OnInit {
     }
     incompleteButton.style.backgroundColor = "darkgray";
     completedTaskButton.style.backgroundColor = "lightgray";
+    this.taskService.changeTicker(this.ticker);
+  }
+
+  getId(index: number) {
+    if (this.ticker == 0) {
+      this.taskService.getId(index);
+    } else if (this.ticker == 1 ){
+      this.taskService.getCompletedId(index);
+    }
   }
 
   get taskItems() {
     return this.taskService.getTaskList();
-  }
-
-  completeTasks() {
-    console.log(this.taskService.returnCompletedTasks());
   }
 
   get completedTasks() {

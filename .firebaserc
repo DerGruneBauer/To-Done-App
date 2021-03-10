@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "to-done-app-42a2b"
+  },
+  "targets": {
+    "to-done-app-42a2b": {
+      "hosting": {
+        "web": [
+          "to-done-app-42a2b"
+        ]
+      }
+    }
+  }
+}
