@@ -1,3 +1,8 @@
+//****************************************** */
+// "LOG IN" USERNAME: admin
+// "LOG IN" PASSWORD: 1234
+//********************************************* */
+
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../task.service';
 import { Router, RouterModule, Routes } from '@angular/router';

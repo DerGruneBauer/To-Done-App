@@ -1,3 +1,8 @@
+//****************************************** */
+// "LOG IN" USERNAME: admin
+// "LOG IN" PASSWORD: 1234
+//********************************************* */
+
 import { BrowserModule } from '@angular/platform-browser';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';

@@ -1,7 +1,11 @@
+//****************************************** */
+// "LOG IN" USERNAME: admin
+// "LOG IN" PASSWORD: 1234
+//********************************************* */
+
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../../task.service';
 import { Task } from '../../task';
-
 import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({

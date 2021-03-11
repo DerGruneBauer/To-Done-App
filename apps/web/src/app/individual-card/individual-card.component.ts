@@ -1,3 +1,8 @@
+//****************************************** */
+// "LOG IN" USERNAME: admin
+// "LOG IN" PASSWORD: 1234
+//********************************************* */
+
 import { Component, OnInit } from '@angular/core';
 import { HostListener } from "@angular/core";
 import { Task } from '../task';
