@@ -1,3 +1,8 @@
+//****************************************** */
+// "LOG IN" USERNAME: admin
+// "LOG IN" PASSWORD: 1234
+//********************************************* */
+
 import { Injectable } from '@angular/core';
 import { Task } from './task';
 import { Router, RouterModule, Routes } from '@angular/router';
